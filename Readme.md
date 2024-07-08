@@ -1,21 +1,67 @@
-# Assignment 11 - Data is the new Oil ✅
+# Food App Frontend
 
-## Theory:
+![Food App](./src/images/ss.png)
 
-#### What is prop drilling?
--  The process of passing down props from a higher-level component to a deeply nested child component through intermediary components that do not actually use the props themselves is known as prop drilling.
+## Description
 
-#### What is lifting the state up?
-- Moving the state from a lower-level component to a higher-level component in the component tree. This is done to share the state between multiple components that need access to the same data or to centralize the state management for better control and consistency. 
+The Food App is a web application that allows users to browse restaurants, view menus, and place orders. This repository contains the frontend code built with React and Tailwind CSS. **The application uses the Swiggy Live API to fetch real-time restaurant data.**
 
-#### What is Context Provider and Context Consumer?
-- Context Provider: The Context Provider is a component that provides the context to its child components. It wraps the part of the component tree where you want to make the context available.
-- Context Consumer: The Context Consumer is a component that consumes the context provided by the Provider. It allows components to access the context value and use it within their render method.
+## Features
 
-#### If you don’t pass a value to the provider does it take the default value?
-- Yes, if you don't pass a value to the provider, it will use the default value provided when creating the context using the createContext function.
+- **Responsive Design**: The application is fully responsive and adapts to different screen sizes using Tailwind CSS.
+- **Restaurant Listing**: Browse a list of restaurants with images, names, cuisines, delivery time, and cost for two.
+- **Hover Animations**: Smooth hover animations and dynamic styles enhance the user experience.
 
-## Coding:
+## Upcoming Features
 
-#### Practice React Context with code examples ✅
-#### Try out Nested Contexts ✅
+1. **Infinite Scroll**: 
+    - Implement infinite scroll using the Swiggy update API to dynamically load more restaurants as users scroll down the page.
+
+2. **User Authentication**: 
+    - Enable user authentication to allow users to create accounts, log in, and manage their profiles. Features like saving favorite restaurants, viewing order history, and managing account settings.
+
+3. **Location-Based Restaurant Listing**: 
+    - Use the user's geographical coordinates (longitude and latitude) to provide a list of nearby restaurants. This feature will leverage location services to ensure users see the most relevant dining options based on their current location.
+
+4. **Cart Functionality**: 
+    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will include features like updating quantities, viewing total costs, and proceeding to checkout, providing a complete and convenient ordering process.
+
+5. **Additional Filters**: 
+    - Add advanced filtering options to help users narrow down restaurant choices based on criteria such as rating, cuisine type, delivery time, cost for two, etc.
+
+## Technologies Used
+
+- React
+- Tailwind CSS
+- FontAwesome for icons
+- React Router for navigation
+- **Swiggy Live API** for fetching restaurant data
+- **Parcel Bundler**: For Efficient bundling of the project for development and production.
+
+## Getting Started
+
+### Prerequisites
+
+Before running the project, ensure you have the following installed:
+
+- Node.js (v12 or higher)
+- npm (v6 or higher) or yarn (v1.22 or higher)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/food-app-frontend.git
+   cd Food-App-FE```
+
+2. **Install Dependencies:**
+    ```bash
+    npm install```
+
+3. **Run Application:**
+    ```bash
+    npm start```
+
+### Contributing
+
+If you would like to contribute to this project, please feel free to fork the repository, create a new branch, and submit a pull request with your changes. Contributions are always welcome!
