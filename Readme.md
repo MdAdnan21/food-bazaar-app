@@ -17,6 +17,9 @@ The Food App is a web application that allows users to browse restaurants, view 
 
 ## Upcoming Features
 
+1. **Carousel**:
+    - Add a carousel to display restaurant images form the provied data from swiggy apis.
+
 1. **Infinite Scroll**: 
     - Implement infinite scroll using the Swiggy update API to dynamically load more restaurants as users scroll down the page.
 
@@ -27,7 +30,7 @@ The Food App is a web application that allows users to browse restaurants, view 
     - Use the user's geographical coordinates (longitude and latitude) to provide a list of nearby restaurants. This feature will leverage location services to ensure users see the most relevant dining options based on their current location.
 
 4. **Cart Functionality**: 
-    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will include features like updating quantities, viewing total costs, and proceeding to checkout, providing a complete and convenient ordering process.
+    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will include features like updating quantities, viewing total costs, and proceeding to checkout.
 
 5. **Additional Filters**: 
     - Add advanced filtering options to help users narrow down restaurant choices based on criteria such as rating, cuisine type, delivery time, cost for two, etc.
