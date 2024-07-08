@@ -8,9 +8,12 @@ The Food App is a web application that allows users to browse restaurants, view 
 
 ## Features
 
-- **Responsive Design**: The application is fully responsive and adapts to different screen sizes using Tailwind CSS.
-- **Restaurant Listing**: Browse a list of restaurants with images, names, cuisines, delivery time, and cost for two.
-- **Hover Animations**: Smooth hover animations and dynamic styles enhance the user experience.
+1. **Responsive Design**: 
+    - The application is fully responsive and adapts to different screen sizes using Tailwind CSS.
+2. **Restaurant Listing**: 
+    - Browse a list of restaurants with images, names, cuisines, delivery time, and cost for two.
+3. **Hover Animations**: 
+    - Smooth hover animations and dynamic styles enhance the user experience.
 
 ## Upcoming Features
 
@@ -52,15 +55,18 @@ Before running the project, ensure you have the following installed:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/food-app-frontend.git
-   cd Food-App-FE```
+   cd Food-App-FE
+   ```
 
 2. **Install Dependencies:**
     ```bash
-    npm install```
+    npm install
+    ```
 
 3. **Run Application:**
     ```bash
-    npm start```
+    npm start
+    ```
 
 ### Contributing
 
