@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import { Bars, CartIcon } from "../utils/Icons";
+import { Bars, CartIcon, Close } from "../utils/Icons";
 import UserContext from "../utils/UserContext";
 import Logo from "../images/Logo.png"
 
@@ -23,7 +23,7 @@ const Header = () => {
               alt="logo" 
           />
           <div>
-            <p className="hidden mobile:block text-[#211b16] font-extrabold text-3xl uppercase whitespace-nowrap">Food App</p>
+            <p className="hidden mobile:block text-[#211b16] font-extrabold text-3xl uppercase whitespace-nowrap">Foodzy</p>
             <p className="hidden mobile:block text-[#fe8b00] font-semibold text-center text-sm whitespace-nowrap">Order your healthy food now!</p>
           </div>
         </Link>
@@ -49,8 +49,8 @@ const Header = () => {
           >
             {btnName}
           </button>
-          <button className="mx-4"  onClick={() => { setShowNavItems(!showNavItems)} }>
-            <Bars />
+          <button className="mx-4 w-12"  onClick={() => { setShowNavItems(!showNavItems)} }>
+            {showNavItems ? <Close/> : <Bars /> }
           </button>
         </div>
       </div> 
