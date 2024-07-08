@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faChevronDown, faChevronUp, faStar, faCartShopping, faBars} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faChevronDown, faChevronUp, faStar, faCartShopping, faBars, faX, faXmark} from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 
 export const CartIcon = () => <FontAwesomeIcon className='cursor-pointer group-hover:text-[#fe8b00] text-xl' icon={faShoppingCart} />;
@@ -15,3 +15,5 @@ export const Time = () => <FontAwesomeIcon  icon={faClock} />
 export const Location = () => <FontAwesomeIcon className='mx-1' icon={faCartShopping} />
 
 export const Bars = () => <FontAwesomeIcon className='tablet:hidden cursor-pointer p-3 hover:text-[#fe8b00] transition duration-300 transform hover:scale-105 border-gray-200 border-1 shadow-lg rounded-lg' icon={faBars} />
+
+export const Close = () => <FontAwesomeIcon className='tablet:hidden cursor-pointer p-3 hover:text-[#fe8b00] transition duration-300 transform hover:scale-105 border-gray-200 border-1 shadow-lg rounded-lg' icon={faXmark} />
