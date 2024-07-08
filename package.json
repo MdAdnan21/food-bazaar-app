@@ -1,7 +1,7 @@
 {
-  "name": "namaste-react",
+  "name": "foodzy",
   "version": "1.0.0",
-  "description": "My learning",
+  "description": "The Food App is a web application that allows users to browse restaurants, view menus, and place orders",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dee077/Namaste-React.git"
+    "url": "git+https://github.com/dee077/Food_App-FE.git"
   },
   "author": "Deepanshu Sahu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dee077/Namaste-React/issues"
+    "url": "https://github.com/dee077/Food_App-FE/issues"
   },
-  "homepage": "https://github.com/dee077/Namaste-React#readme",
+  "homepage": "https://github.com/dee077/Food_App-FE#readme",
   "devDependencies": {
     "parcel": "^2.11.0",
     "postcss": "^8.4.36",
