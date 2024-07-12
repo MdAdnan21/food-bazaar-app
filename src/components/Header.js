@@ -15,7 +15,7 @@ const Header = () => {
   const cartItemCount = 2;
 
   return (
-    <div className="flex justify-between flex-col shadow-lg mx-5">
+    <div className="flex justify-between flex-col mx-5 shadow-lg transition duration-1000 ease-out">
       <div className="flex flex-row justify-between">
         <Link to="/" className="flex items-center w-3/12 mx-[4%]">
           <img className="w-24 mx-5 my-2" 
@@ -54,14 +54,14 @@ const Header = () => {
           </button>
         </div>
       </div> 
-        {showNavItems && <div className="flex items-center">
+        <div className={`${showNavItems ? 'max-h-60' : 'max-h-0 invisible'}  flex items-center transition-all duration-500 ease-in-out overflow-hidden`}>
           <ul className="px-4 mt-2 mb-6 mx-4 w-full flex flex-col items-center space-y-4">
             <li><Link to='/' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Home</Link></li>
             <li><Link to='/about' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">About Us</Link></li>
             <li><Link to='/contact' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Contact Us</Link></li>
             <li><Link to='/grocery' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Grocery</Link></li>
           </ul>
-        </div>}
+        </div>
     </div>
 )};
 
