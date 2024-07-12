@@ -5,6 +5,8 @@ import { Link } from "react-router-dom"
 import { RESTAURANT_DATA_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import Carousel from "./Carousel";
+import Footer from "./Footer";
 
 const Body = () => {
   
@@ -12,6 +14,8 @@ const Body = () => {
   const [filteredListOfRestaurant, setfilteredListOfRestaurat] = useState({data: [], dataLoading:true,  filtered: false})
   const [searchText, setsearchText] = useState('')
   const {loggedInUser, setUserName} = useContext(UserContext) 
+  const [carouselDishData, setCarouselDishData] = useState([])
+  const [carouselResData, setCarouselResData] = useState([])
   useEffect( () => {
     fetchData();
   }, []);
@@ -22,8 +26,21 @@ const Body = () => {
     );
     const json = await data.json();
     console.log(json)
-    const liveResData=json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // console.log(liveResData)
+
+    const liveCarouselDishData = {
+      data: json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info, 
+      heading: json?.data?.cards[0]?.card?.card?.header?.title
+    }
+    setCarouselDishData(liveCarouselDishData)
+
+    const liveCarouselResData = {
+      data: json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants, 
+      heading: json?.data?.cards[1]?.card?.card?.header?.title
+    }
+    setCarouselResData(liveCarouselResData)
+    // console.log(liveCarouselData)
+
+    const liveResData = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setlistOfRestaurant(liveResData)
     setfilteredListOfRestaurat({data: liveResData, dataLoading: false, filtered: false})
     // console.log(filteredListOfRestaurant.data)
@@ -35,8 +52,8 @@ const Body = () => {
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
 
   return (
-    <div className="body">
-      <div className="filter flex items-center">
+    <div className="body mt-[3%] mb-[5%] mx-[5%]">
+      {/* <div className="filter flex items-center">
         <div className="m-4 p-4 flex items-center">
           <button 
             className="filter-btn px-4 py-2 bg-gray-100 rounded-lg shadow-lg" 
@@ -86,10 +103,23 @@ const Body = () => {
               onChange={(e) => {setUserName(e.target.value)}} 
             />
         </div>
-      </div>
+      </div> */}
+
+      <Carousel 
+        type={'Dish'}
+        carouselData={ carouselDishData } 
+      />
+
+      <Carousel 
+        type={'Restaurant'}
+        carouselData={ carouselResData } 
+      />
+
+      <h1 className='text-2xl font-extrabold mx-2  tablet:mx-5 my-2'>Restaurants with online food delivery in Nagpur</h1>
+
       {filteredListOfRestaurant.dataLoading ? 
       ( <Shimmer/> ) : !filteredListOfRestaurant.data?.length ? <h1 className="no-data">No data found</h1> : 
-        <div className="res-container flex flex-wrap items-start mx-[5%] justify-center">
+        <div className="flex flex-wrap items-start my-3 justify-center">
         {filteredListOfRestaurant.data.map((restaurant) => (
           <Link
             key={restaurant.info.id}

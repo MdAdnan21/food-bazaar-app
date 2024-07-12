@@ -23,3 +23,11 @@
   visibility: visible;
   transform: scaleX(0.8);
 }
+
+.no-scrollbar{
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* Optional: Set scrollbar width to 0 for other browsers */
+  scrollbar-width: none;
+}
