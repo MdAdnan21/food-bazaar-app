@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowLeft, ArrowRight, Rating, Time } from '../utils/Icons';
 import { CDN_URL } from '../utils/constants';
-import RestaurantCard from './RestaurantCard';
 import { getRatingColorClass } from '../utils/miscellaneous';
+import { Link } from "react-router-dom"
 
 const DishData = ({imageId, index}) => (
     <div
@@ -103,7 +103,7 @@ const Carousel = ({ carouselData, type }) => {
       </div>
       <div
         ref={scrollContainerRef}
-        className="flex my-2 transition-transform duration-500 ease-in-out no-scrollbar overflow-x-scroll overflow-y-hidden"
+        className="flex my-2 mr-[4%] transition-transform duration-500 ease-in-out no-scrollbar overflow-x-scroll overflow-y-hidden"
       >
         {carouselData?.data?.map((data, index) => (
           type === 'Dish' ? (
@@ -113,17 +113,19 @@ const Carousel = ({ carouselData, type }) => {
               index={index}
             />
           ) : (
-            <ResData
-              key={data?.info?.id}
-              imageId={data?.info?.cloudinaryImageId}
-              index={index}
-              name={data?.info?.name}
-              avgRating={data?.info?.avgRating}
-              avgRatingString={data?.info?.avgRatingString}
-              cuisines={data?.info?.cuisines}
-              costForTwo={data?.info?.costForTwo}
-              time={data?.info?.time}
-            />
+            <Link to={'/restaurant/'+ data.info.id}>
+              <ResData
+                key={data?.info?.id}
+                imageId={data?.info?.cloudinaryImageId}
+                index={index}
+                name={data?.info?.name}
+                avgRating={data?.info?.avgRating}
+                avgRatingString={data?.info?.avgRatingString}
+                cuisines={data?.info?.cuisines}
+                costForTwo={data?.info?.costForTwo}
+                time={data?.info?.time}
+              />
+            </Link>
           )
         ))}
       </div>

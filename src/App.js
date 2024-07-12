@@ -8,6 +8,7 @@ import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
+import Footer from "./components/Footer";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"))
@@ -27,6 +28,7 @@ const App = () => {
     <div className="App">
       <Header />
       <Outlet />
+      <Footer />
     </div> 
   </UserContext.Provider>
 };

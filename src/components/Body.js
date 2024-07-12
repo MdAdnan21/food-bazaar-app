@@ -6,7 +6,6 @@ import { RESTAURANT_DATA_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import Carousel from "./Carousel";
-import Footer from "./Footer";
 
 const Body = () => {
   
@@ -119,7 +118,7 @@ const Body = () => {
 
       {filteredListOfRestaurant.dataLoading ? 
       ( <Shimmer/> ) : !filteredListOfRestaurant.data?.length ? <h1 className="no-data">No data found</h1> : 
-        <div className="flex flex-wrap items-start my-3 justify-center">
+        <div className="flex flex-wrap my-13">
         {filteredListOfRestaurant.data.map((restaurant) => (
           <Link
             key={restaurant.info.id}
