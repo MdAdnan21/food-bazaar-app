@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Rating, Time } from '../utils/Icons';
 import { CDN_URL } from '../utils/constants';
 import { getRatingColorClass } from '../utils/miscellaneous';
 import { Link } from "react-router-dom"
+import CarouselSkeleton from '../Skeletons/CarouselSkeleton'
 
 const DishData = ({imageId, index}) => (
     <div
@@ -43,7 +44,7 @@ const ResData = ( {imageId, index, name, avgRating, avgRatingString, cuisines, c
     </div>
 )
 
-const Carousel = ({ carouselData, type }) => {
+const Carousel = ({ carouselData, type, isLoading }) => {
   const scrollContainerRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(true);
@@ -80,7 +81,10 @@ const Carousel = ({ carouselData, type }) => {
     }
   }, [carouselData]);
 
-  // console.log(carouselData)
+  // console.log('Carousel Data: ', carouselData)
+  if(isLoading){
+    return <CarouselSkeleton type={type} />
+  }
 
   return (
     <div className="w-full mb-5">
@@ -113,9 +117,8 @@ const Carousel = ({ carouselData, type }) => {
               index={index}
             />
           ) : (
-            <Link to={'/restaurant/'+ data.info.id}>
+            <Link key={data?.info?.id} to={'/restaurant/'+ data.info.id}>
               <ResData
-                key={data?.info?.id}
                 imageId={data?.info?.cloudinaryImageId}
                 index={index}
                 name={data?.info?.name}
@@ -123,7 +126,7 @@ const Carousel = ({ carouselData, type }) => {
                 avgRatingString={data?.info?.avgRatingString}
                 cuisines={data?.info?.cuisines}
                 costForTwo={data?.info?.costForTwo}
-                time={data?.info?.time}
+                time={data?.info?.sla?.slaString}
               />
             </Link>
           )

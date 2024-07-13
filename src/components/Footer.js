@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <div className="flex w-full flex-col"> 
       <div className="flex flex-wrap w-full px-4 py-8 bg-gray-200 justify-center">
-        <h1 className="my-2 text-2xl font-bold text-gray-800 mx-5">
-          For better experience, download <br /> the Foodzy app now
+        <h1 className="my-2 text-2xl font-bold text-gray-800 mr-[5%]">
+          Checkout our app, <br /> For better experience 
         </h1>
         <div className="flex flex-wrap justify-center">
             <button className="my-2 flex items-center whitespace-nowrap justify-center mx-5 bg-black text-white py-2 px-3 rounded-lg text-left shadow-lg hover:bg-[#131313]">

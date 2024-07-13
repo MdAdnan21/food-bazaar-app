@@ -4,6 +4,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import { Bars, CartIcon, Close } from "../utils/Icons";
 import UserContext from "../utils/UserContext";
 import Logo from "../images/Logo.png"
+import SideMenu from "./SideMenu";
 
 
 const Header = () => {
@@ -45,9 +46,10 @@ const Header = () => {
             )}
           </div>
           <button
+            onClick={() => setShowSideMenu(!showSideMenu)}
             className="mx-5 shadow-lg bg-[#fe8b00] text-white font-medium px-4 py-2 rounded-md transition duration-300 transform hover:bg-[#e57c00] hover:scale-105 hover:shadow-lg whitespace-nowrap"
           >
-            {btnName}
+            Sign In
           </button>
           <button className="mx-4 w-12"  onClick={() => { setShowNavItems(!showNavItems)} }>
             {showNavItems ? <Close/> : <Bars /> }

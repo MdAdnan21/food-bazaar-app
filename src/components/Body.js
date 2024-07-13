@@ -1,20 +1,22 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard"
 import { useContext, useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom"
 import { RESTAURANT_DATA_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import Carousel from "./Carousel";
+import RestaurantCardSkeleton from "../Skeletons/RestaurantCardSkeleton";
 
 const Body = () => {
   
   const [listOfRestaurant, setlistOfRestaurant] = useState([])
-  const [filteredListOfRestaurant, setfilteredListOfRestaurat] = useState({data: [], dataLoading:true,  filtered: false})
+  const [filteredListOfRestaurant, setfilteredListOfRestaurat] = useState({data: [], filtered: false})
+  const [isLoading, setIsLoading] = useState(true)
   const [searchText, setsearchText] = useState('')
   const {loggedInUser, setUserName} = useContext(UserContext) 
   const [carouselDishData, setCarouselDishData] = useState([])
   const [carouselResData, setCarouselResData] = useState([])
+
   useEffect( () => {
     fetchData();
   }, []);
@@ -25,6 +27,7 @@ const Body = () => {
     );
     const json = await data.json();
     console.log(json)
+    setIsLoading(false)
 
     const liveCarouselDishData = {
       data: json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info, 
@@ -41,7 +44,7 @@ const Body = () => {
 
     const liveResData = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setlistOfRestaurant(liveResData)
-    setfilteredListOfRestaurat({data: liveResData, dataLoading: false, filtered: false})
+    setfilteredListOfRestaurat({data: liveResData,heading: 'Top restaurant chains in Nagpur',  dataLoading: false, filtered: false})
     // console.log(filteredListOfRestaurant.data)
   }
 
@@ -105,26 +108,28 @@ const Body = () => {
       </div> */}
 
       <Carousel 
+        isLoading={isLoading}
         type={'Dish'}
         carouselData={ carouselDishData } 
       />
 
-      <Carousel 
+      <Carousel
+        isLoading={isLoading}
         type={'Restaurant'}
         carouselData={ carouselResData } 
       />
 
-      <h1 className='text-2xl font-extrabold mx-2  tablet:mx-5 my-2'>Restaurants with online food delivery in Nagpur</h1>
+      <h1 className='text-2xl font-extrabold mx-2  tablet:mx-5 my-2'>{filteredListOfRestaurant?.heading}</h1>
 
-      {filteredListOfRestaurant.dataLoading ? 
-      ( <Shimmer/> ) : !filteredListOfRestaurant.data?.length ? <h1 className="no-data">No data found</h1> : 
+      { isLoading ? 
+      ( <RestaurantCardSkeleton /> ) : !filteredListOfRestaurant.data?.length ? <h1 className="no-data">No data found</h1> : 
         <div className="flex flex-wrap my-13">
-        {filteredListOfRestaurant.data.map((restaurant) => (
+        {filteredListOfRestaurant?.data?.map((restaurant) => (
           <Link
-            key={restaurant.info.id}
-            to={'/restaurant/'+restaurant.info.id}
+            key={restaurant?.info?.id}
+            to={'/restaurant/'+restaurant?.info?.id}
           >
-            {!restaurant.info.isOpen ? 
+            {!restaurant?.info?.isOpen ? 
               (<RestaurantCardPromoted resData={restaurant} />) : 
               (<RestaurantCard resData={restaurant} />)}
           </Link>))
