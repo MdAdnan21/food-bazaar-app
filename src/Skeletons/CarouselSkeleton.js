@@ -24,7 +24,7 @@ const CarouselSkeleton = ({type}) => {
                     <div className="w-5/12 h-5 bg-gray-300 my-1 mx-5 rounded-lg shimmer flex-shrink-0"></div>
                 </div>
                 <div className="h-5 bg-gray-300 my-2 mx-5 rounded-lg shimmer flex-shrink-0"></div>
-                <div className="flex">
+                <div className="flex justify-between">
                   <div className="w-4/12 h-5 bg-gray-300 my-1 mx-5 rounded-lg shimmer flex-shrink-0"></div>
                   <div className="w-4/12 h-5 bg-gray-300 my-1 mx-5 rounded-lg shimmer flex-shrink-0"></div>
                 </div>
