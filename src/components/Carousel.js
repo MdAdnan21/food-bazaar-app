@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, Rating, Time } from '../utils/Icons';
 import { CDN_URL } from '../utils/constants';
 import { getRatingColorClass } from '../utils/miscellaneous';
 import { Link } from "react-router-dom"
-import CarouselSkeleton from '../Skeletons/CarouselSkeleton'
+import CarouselSkeleton from '../skeletons/CarouselSkeleton'
 
 const DishData = ({imageId, index}) => (
     <div
@@ -117,7 +117,7 @@ const Carousel = ({ carouselData, type, isLoading }) => {
               index={index}
             />
           ) : (
-            <Link key={data?.info?.id} to={'/restaurant/'+ data.info.id}>
+           <Link key={data?.info?.id} to={'/restaurant/'+data?.info?.id}>
               <ResData
                 imageId={data?.info?.cloudinaryImageId}
                 index={index}

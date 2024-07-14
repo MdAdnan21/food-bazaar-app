@@ -1,17 +1,17 @@
 import React, { Suspense, lazy, useEffect, useState } from "react"
 import ReactDOM from "react-dom/client"
 import Header from "./components/Header";
-import Body from "./components/Body"
-import Contact from "./components/Contact"; 
-import About from "./components/About"
+import Contact from "./pages/Contact"; 
+import About from "./pages/About"
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
-import RestaurantMenu from "./components/RestaurantMenu";
+import RestaurantMenu from "./pages/RestaurantMenu";
 import UserContext from "./utils/UserContext";
 import Footer from "./components/Footer";
-// import Grocery from "./components/Grocery";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
 
-const Grocery = lazy(() => import("./components/Grocery"))
+const Grocery = lazy(() => import("./pages/Grocery"))
 
 const App = () => {
 
@@ -39,7 +39,7 @@ const appRouter=createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Body />,
+        element: <Home />,
       },
       {
         path: '/about',
@@ -48,6 +48,10 @@ const appRouter=createBrowserRouter([
       {
         path: '/contact',
         element: <Contact />
+      },
+      {
+        path: '/cart',
+        element: <Cart />
       },
       {
         path: '/restaurant/:resId',

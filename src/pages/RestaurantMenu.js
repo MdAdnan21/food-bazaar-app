@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
 import { RESTAURANT_MENU_API } from "../utils/constants";
 import { useParams } from "react-router-dom";
-import useRestaurantMenu from "../utils/useRestaurnantMenu";
-import RestaurantCategory from "./RestaurantCategory";
+import useRestaurantMenu from "../hooks/useRestaurnantMenu";
+import RestaurantCategory from "../components/RestaurantCategory";
+import RestaurantCardSkeleton from "../skeletons/RestaurantCardSkeleton";
 
 const RestaurantMenu = () => {
   const { resId } = useParams()
   const resInfo = useRestaurantMenu(resId)
   const [showIndex, setShowIndex] = useState(0)
-
-  if( !resInfo) return <Shimmer />
+  
+  console.log(resInfo, resId)
+  if(!resInfo) return <RestaurantCardSkeleton />
 
   const { name, cuisines, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
-  let categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards
-  console.log(categories)
+  let categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards;
+  //   console.log(categories)
   categories=categories.filter(
     (c) => 
       c.card.card?.['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
   );
-  // console.log(categories)
   // console.log(showIndex)
   return (
     <div className="text-center m-4">

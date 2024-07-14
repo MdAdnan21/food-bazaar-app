@@ -1,13 +1,13 @@
-import RestaurantCard, { withPromotedLabel } from "./RestaurantCard"
 import { useContext, useEffect, useState } from "react";
+import RestaurantCard, { withPromotedLabel } from "../components/RestaurantCard"
 import { Link } from "react-router-dom"
 import { RESTAURANT_DATA_API } from "../utils/constants";
-import useOnlineStatus from "../utils/useOnlineStatus";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 import UserContext from "../utils/UserContext";
-import Carousel from "./Carousel";
-import RestaurantCardSkeleton from "../Skeletons/RestaurantCardSkeleton";
+import Carousel from "../components/Carousel";
+import RestaurantCardSkeleton from "../skeletons/RestaurantCardSkeleton";
 
-const Body = () => {
+const Home = () => {
   
   const [listOfRestaurant, setlistOfRestaurant] = useState([])
   const [filteredListOfRestaurant, setfilteredListOfRestaurat] = useState({data: [], filtered: false})
@@ -139,4 +139,4 @@ const Body = () => {
     </div>
   )}
 
-  export default Body;
+  export default Home;
