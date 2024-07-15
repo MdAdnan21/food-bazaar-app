@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants"
 const ItemList = ({item, visible}) => {
   return (
     <div className={`${visible ? 'max-h-[1000vh]' : 'invisible max-h-0'} shadow-lg rounded-lg text-left transition-all duration-500 ease-in-out overflow-hidden auto-scroll`}>
-        {item.map( (data) => (
+        {item?.map( (data) => (
           <div key={data?.card?.info?.id} className="px-2 py-3 mx-3 my-5 border-gray-300 border-b flex justify-between">
             <div className="w-9/12 flex flex-col justify-between h-full">
                 <span className="py-2">{data?.card?.info?.name}</span>

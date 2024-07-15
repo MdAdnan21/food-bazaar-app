@@ -1,57 +1,31 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import RestaurantCard, { withPromotedLabel } from "../components/RestaurantCard"
 import { Link } from "react-router-dom"
-import { RESTAURANT_DATA_API } from "../utils/constants";
 import useOnlineStatus from "../hooks/useOnlineStatus";
-import UserContext from "../utils/UserContext";
 import Carousel from "../components/Carousel";
 import RestaurantCardSkeleton from "../skeletons/RestaurantCardSkeleton";
+import useResData from "../hooks/useResData";
 
 const Home = () => {
   
-  const [listOfRestaurant, setlistOfRestaurant] = useState([])
-  const [filteredListOfRestaurant, setfilteredListOfRestaurat] = useState({data: [], filtered: false})
-  const [isLoading, setIsLoading] = useState(true)
   const [searchText, setsearchText] = useState('')
-  const {loggedInUser, setUserName} = useContext(UserContext) 
-  const [carouselDishData, setCarouselDishData] = useState([])
-  const [carouselResData, setCarouselResData] = useState([])
 
-  useEffect( () => {
-    fetchData();
-  }, []);
+  const { restaurants, filteredRestaurants, isLoading, error, carouselDishData, carouselResData } = useResData();
 
-  const fetchData = async () => {
-    const data = await fetch(
-        RESTAURANT_DATA_API
-    );
-    const json = await data.json();
-    console.log(json)
-    setIsLoading(false)
-
-    const liveCarouselDishData = {
-      data: json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info, 
-      heading: json?.data?.cards[0]?.card?.card?.header?.title
-    }
-    setCarouselDishData(liveCarouselDishData)
-
-    const liveCarouselResData = {
-      data: json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants, 
-      heading: json?.data?.cards[1]?.card?.card?.header?.title
-    }
-    setCarouselResData(liveCarouselResData)
-    // console.log(liveCarouselData)
-
-    const liveResData = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    setlistOfRestaurant(liveResData)
-    setfilteredListOfRestaurat({data: liveResData,heading: 'Top restaurant chains in Nagpur',  dataLoading: false, filtered: false})
-    // console.log(filteredListOfRestaurant.data)
-  }
+  // console.log("Restaurant: ", restaurants)
+  console.log("FilteredRestaurants: ", filteredRestaurants)
+  console.log("isLoading: ", isLoading)
+  // console.log("CarouselDishData", carouselDishData)
+  // console.log("CarouselResData", carouselResData)
 
   const onlineStatus = useOnlineStatus()
+  
   if(!onlineStatus) return <h1>Looks like you are offline!! Please check your internet connection...</h1>
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
+
+  // const dispatch = useDispatch();
+  // const { restaurants, filteredRestaurants, isLoading, error, carouselDishData, carouselResData } = useResData();
 
   return (
     <div className="body mt-[3%] mb-[5%] mx-[5%]">
@@ -119,12 +93,12 @@ const Home = () => {
         carouselData={ carouselResData } 
       />
 
-      <h1 className='text-2xl font-extrabold mx-2  tablet:mx-5 my-2'>{filteredListOfRestaurant?.heading}</h1>
+      <h1 className='text-2xl font-extrabold mx-2  tablet:mx-5 my-2'>{filteredRestaurants?.heading}</h1>
 
       { isLoading ? 
-      ( <RestaurantCardSkeleton /> ) : !filteredListOfRestaurant.data?.length ? <h1 className="no-data">No data found</h1> : 
+      ( <RestaurantCardSkeleton /> ) : !filteredRestaurants.data?.length ? <h1 className="no-data">No data found</h1> : 
         <div className="flex flex-wrap my-13">
-        {filteredListOfRestaurant?.data?.map((restaurant) => (
+        {filteredRestaurants?.data?.map((restaurant) => (
           <Link
             key={restaurant?.info?.id}
             to={'/restaurant/'+restaurant?.info?.id}

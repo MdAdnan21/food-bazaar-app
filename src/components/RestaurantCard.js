@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import UserContext from "../utils/UserContext";
 import { CDN_URL } from "../utils/constants";
 import { Time, Rating, Location } from "../utils/Icons";
 import { getRatingColorClass } from "../utils/miscellaneous";
@@ -8,7 +7,7 @@ import { getRatingColorClass } from "../utils/miscellaneous";
 const RestaurantCard = (props) => {
     const { resData } = props
     const { cloudinaryImageId, name, costForTwo, cuisines, sla, avgRating, avgRatingString } = resData?.info
-    const {loggedInUser} = useContext(UserContext)
+
     return (
       <div className="my-4 mx-5 w-72 p-4 bg-[#f7f4f4w] hover:bg-slate-100 shadow-lg hover:shadow-2xl rounded-lg transition-transform transform hover:scale-105">
         <div className=" h-40 w-full overflow-hidden">

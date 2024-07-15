@@ -2,7 +2,7 @@ import React from "react";
 
 const CarouselSkeleton = ({type}) => {
   return (
-    <div className="my-2 mr-[4%] overflow-x-scroll no-scrollbar">
+    <div className="my-2 mr-[4%]">
       <div className="flex justify-between">
         <div className="flex w-1/3 flex-row h-10 shimmer flex-shrink-0 rounded-lg my-5 bg-gray-300"></div>
         <div className="flex items-center">
@@ -10,7 +10,7 @@ const CarouselSkeleton = ({type}) => {
             <div className="w-12 h-12 rounded-full shimmer flex-shrink-0 bg-gray-300"></div>
         </div>
       </div> 
-      <div className="flex">
+      <div className="flex overflow-x-scroll no-scrollbar">
         {Array.from({ length: 20 }).map((_, index) => (
             // <div key={index} className="w-40 h-40 bg-gray-300 m-5 rounded-lg shimmer flex-shrink-0"></div>
             <div  key={index} className="">

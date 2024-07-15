@@ -1,8 +1,7 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import { Bars, CartIcon, Close } from "../utils/Icons";
-import UserContext from "../utils/UserContext";
 import Logo from "../images/Logo.png"
 import SideMenu from "./SideMenu";
 
@@ -56,12 +55,20 @@ const Header = () => {
           </button>
         </div>
       </div> 
-        <div className={`${showNavItems ? 'max-h-60' : 'max-h-0 invisible'}  flex items-center transition-all duration-500 ease-in-out overflow-hidden`}>
-          <ul className="px-4 mt-2 mb-6 mx-4 w-full flex flex-col items-center space-y-4">
-            <li><Link to='/' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Home</Link></li>
-            <li><Link to='/about' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">About</Link></li>
-            <li><Link to='/contact' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Contact Us</Link></li>
-            <li><Link to='/grocery' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Grocery</Link></li>
+        <div className={`${showNavItems ? 'max-h-80' : 'max-h-0 invisible'}  flex items-center transition-all duration-500 ease-in-out overflow-hidden`}>
+          <ul className="px-4 mt-2 mb-6 mx-4 w-full min-h-full flex flex-col items-center">
+            <li className="mt-2"><Link to='/cart' className="inline smobile:hidden relative mx-3 px-3 py-0.5 text-lg group underline-animation">
+                <CartIcon />
+                {cartItemCount && (
+                  <span className="absolute -top-1 right-1.5 bg-red-600 group-hover:bg-[#fe8b00] text-white rounded-full h-4 w-4 flex items-center justify-center text-xs">
+                    {cartItemCount}
+                  </span>
+                )}
+            </Link></li>
+            <li className="my-2"><Link to='/' className="px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Home</Link></li>
+            <li className="my-2"><Link to='/about' className="px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">About</Link></li>
+            <li className="my-2"><Link to='/contact' className="py-1 px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Contact Us</Link></li>
+            <li className="my-2"><Link to='/grocery' className="px-4 font-medium text-xl hover:text-[#fe8b00] underline-animation whitespace-nowrap">Grocery</Link></li>
           </ul>
         </div>
     </div>
