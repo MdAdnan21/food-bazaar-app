@@ -14,35 +14,49 @@ The Food App is a web application that allows users to browse restaurants, view 
     - Browse a list of restaurants with images, names, cuisines, delivery time, and cost for two.
 3. **Hover Animations**: 
     - Smooth hover animations and dynamic styles enhance the user experience.
-
+4. **Carousel**:
+    - Add a carousel to display restaurant images form the provied data from swiggy apis. Implemented scrolling 
+      through button click with useRef hook and custom event listeners on scroll. 
+5. **Mock Backend**
+    - Created a mock swiggy backend to bypass swiggy's cors policy.
+ 
 ## Upcoming Features
 
-1. **Carousel**:
-    - Add a carousel to display restaurant images form the provied data from swiggy apis.
 
 1. **Infinite Scroll**: 
-    - Implement infinite scroll using the Swiggy update API to dynamically load more restaurants as users scroll down the page.
+    - Implement infinite scroll using the Swiggy update API to dynamically load more restaurants as users 
+      scroll down the page.
 
 2. **User Authentication**: 
-    - Enable user authentication to allow users to create accounts, log in, and manage their profiles. Features like saving favorite restaurants, viewing order history, and managing account settings.
+    - Enable user authentication to allow users to create accounts, log in, and manage their profiles. Features 
+      like saving favorite restaurants, viewing order history, and managing account settings.
 
 3. **Location-Based Restaurant Listing**: 
-    - Use the user's geographical coordinates (longitude and latitude) to provide a list of nearby restaurants. This feature will leverage location services to ensure users see the most relevant dining options based on their current location.
+    - Use the user's geographical coordinates (longitude and latitude) to provide a list of nearby restaurants. 
+      This feature will leverage location services to ensure users see the most relevant dining options based 
+      on their current location.
 
 4. **Cart Functionality**: 
-    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will include features like updating quantities, viewing total costs, and proceeding to checkout.
+    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will 
+      include features like updating quantities, viewing total costs, and proceeding to checkout.
 
 5. **Additional Filters**: 
-    - Add advanced filtering options to help users narrow down restaurant choices based on criteria such as rating, cuisine type, delivery time, cost for two, etc.
+    - Add advanced filtering options to help users narrow down restaurant choices based on criteria such as 
+      rating, cuisine type, delivery time, cost for two, etc.
+
+6. **Add Toasts**:
+    - Add toast to wherever there is requirement for alert or message is necessary for user
 
 ## Technologies Used
 
 - React
+- Node
 - Tailwind CSS
 - FontAwesome for icons
 - React Router for navigation
 - **Swiggy Live API** for fetching restaurant data
 - **Parcel Bundler**: For Efficient bundling of the project for development and production.
+- Redux
 
 ## Getting Started
 
