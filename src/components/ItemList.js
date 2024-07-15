@@ -14,7 +14,7 @@ const ItemList = ({item, visible}) => {
             </div>
             <div className="w-3/12 relative flex items-end justify-center">
                 <div className="absolute my-3">
-                    <button className="px-4 py-1 bg-white shadow-lg rounded-lg text-green-600 ">Add +</button>
+                    <button className="px-4 py-1 bg-white shadow-lg rounded-lg font-semibold text-md text-green-600 hover:bg-gray-200">Add +</button>
                 </div>
                 <div className="w-40 h-40">
                   <img className="w-full h-full rounded-lg"  src={CDN_URL+data?.card?.info?.imageId} alt="dish" />

@@ -96,7 +96,7 @@ const Home = () => {
       <h1 className='text-2xl font-extrabold mx-2  tablet:mx-5 my-2'>{filteredRestaurants?.heading}</h1>
 
       { isLoading ? 
-      ( <RestaurantCardSkeleton /> ) : !filteredRestaurants.data?.length ? <h1 className="no-data">No data found</h1> : 
+      ( <RestaurantCardSkeleton /> ) : !filteredRestaurants.data?.length ? <h1 className="w-1/2 mx-auto my-10 text-3xl font-semibold text-[#fe8b00]">No data found</h1> : 
         <div className="flex flex-wrap my-13">
         {filteredRestaurants?.data?.map((restaurant) => (
           <Link
