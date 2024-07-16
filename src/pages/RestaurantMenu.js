@@ -37,7 +37,7 @@ const RestaurantMenu = () => {
           <p className="my-4 text-gray-900 font-bold flex items-center"><Time style={'text-xl mr-2'} /> {sla.slaString}</p>
           <p className="flex items-center my-4 font-semibold text-gray-700"><Location style={'text-red-600 text-2xl mr-2'} /> {areaName+', '+city}</p>
         </div>
-        <div className="w-64 m-5">
+        <div className="m-5 w-48 h-48">
           <img 
             className="w-full h-full object-cover rounded-lg"
             src={ CDN_URL + cloudinaryImageId }
