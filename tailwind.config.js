@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{html,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'default': '#fe8b00',
+      },
+    },
     screens: {
       'smobile': '470px',
       'mobile': '640px',  

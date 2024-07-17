@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faChevronDown, faChevronUp, faStar, faCartShopping, faBars, faX, faXmark, faArrowRight, faArrowLeft, faLocation, faLocationPin, faLocationDot, faLeaf, faDrumstickBite} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faChevronDown, faChevronUp, faStar, faCartShopping, faBars, faX, faXmark, faArrowRight, faArrowLeft, faLocation, faLocationPin, faLocationDot, faLeaf, faDrumstickBite, faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 
 export const CartIcon = () => <FontAwesomeIcon className='cursor-pointer group-hover:text-[#fe8b00] text-xl' icon={faShoppingCart} />;
@@ -24,4 +24,8 @@ export const ArrowRight = () => <FontAwesomeIcon icon={faArrowRight} />
 
 export const Veg = () => <FontAwesomeIcon className='text-green-600' icon={faLeaf} />
 
-export const NonVeg = () => <FontAwesomeIcon className='text-orange-800' icon={faDrumstickBite} />
+export const NonVeg = () => <FontAwesomeIcon className='text-orange-600' icon={faDrumstickBite} />
+
+export const Plus = () => <FontAwesomeIcon className='text-green-500 mx-3' icon={faPlus} />
+
+export const Minus = () => <FontAwesomeIcon className='text-red-600 mx-3' icon={faMinus} />

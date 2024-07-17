@@ -4,6 +4,7 @@ import useOnlineStatus from "../hooks/useOnlineStatus";
 import { Bars, CartIcon, Close } from "../utils/Icons";
 import Logo from "../images/Logo.png"
 import SideMenu from "./SideMenu";
+import useCart from "../hooks/useCart";
 
 
 const Header = () => {
@@ -12,7 +13,7 @@ const Header = () => {
   const [showNavItems, setShowNavItems] = useState(false)
 
   const onlineStatus = useOnlineStatus()
-  const cartItemCount = 2;
+  const { totalItems } = useCart()
 
   return (
     <div className="flex justify-between flex-col mx-5 shadow-lg transition duration-1000 ease-out">
@@ -38,15 +39,15 @@ const Header = () => {
         <div className="flex items-center justify-center w-7/12 mobile:w-5/12 tablet:w-3/12 desktop:w-3/12">
           <Link to='/cart' className="hidden smobile:inline relative mx-3 px-3 py-0.5 text-lg group underline-animation">
             <CartIcon />
-            {cartItemCount && (
-              <span className="absolute -top-1 right-1.5 bg-red-600 group-hover:bg-[#fe8b00] text-white rounded-full h-4 w-4 flex items-center justify-center text-xs">
-                {cartItemCount}
+            {totalItems !== 0 && (
+              <span className="absolute -top-2 right-1 bg-red-600 group-hover:bg-[#fe8b00] text-white rounded-full h-5 w-5 flex items-center justify-center text-xs">
+                {totalItems}
               </span>
             )}
           </Link>
           <button
             // onClick={() => setShowSideMenu(!showSideMenu)}
-            className="mx-5 shadow-lg bg-[#fe8b00] text-white font-medium px-4 py-2 rounded-md transition duration-300 transform hover:bg-[#e57c00] hover:scale-105 hover:shadow-lg whitespace-nowrap"
+            className="mx-5 shadow-lg bg-[#fe8b00] text-white font-medium px-4 py-2 rounded-md transition duration-300 transform hover:bg-[#e57c00] hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform"
           >
             Sign In
           </button>
@@ -59,9 +60,9 @@ const Header = () => {
           <ul className="px-4 mt-2 mb-6 mx-4 w-full min-h-full flex flex-col items-center">
             <li className="mt-2"><Link to='/cart' className="inline smobile:hidden relative mx-3 px-3 py-0.5 text-lg group underline-animation">
                 <CartIcon />
-                {cartItemCount && (
+                {totalItems !== 0 && (
                   <span className="absolute -top-1 right-1.5 bg-red-600 group-hover:bg-[#fe8b00] text-white rounded-full h-4 w-4 flex items-center justify-center text-xs">
-                    {cartItemCount}
+                    {totalItems}
                   </span>
                 )}
             </Link></li>
