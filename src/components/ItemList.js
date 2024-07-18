@@ -36,6 +36,7 @@ const MenuList = ({data, showDescription}) => {
       removeFromCart()
     }
   }
+  let serves = "", details = "";
   if (description) {
     [serves, details] = description.split('|').map(part => part.trim());
   }
