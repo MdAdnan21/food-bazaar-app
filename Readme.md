@@ -19,6 +19,9 @@ The Food App is a web application that allows users to browse restaurants, view 
       through button click with useRef hook and custom event listeners on scroll. 
 5. **Mock Backend**
     - Created a mock swiggy backend to bypass swiggy's cors policy.
+6. **Cart Functionality**: 
+    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will 
+      include features like updating quantities, viewing total costs, and proceeding to checkout.
  
 ## Upcoming Features
 
@@ -36,15 +39,11 @@ The Food App is a web application that allows users to browse restaurants, view 
       This feature will leverage location services to ensure users see the most relevant dining options based 
       on their current location.
 
-4. **Cart Functionality**: 
-    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will 
-      include features like updating quantities, viewing total costs, and proceeding to checkout.
-
-5. **Additional Filters**: 
+4. **Additional Filters**: 
     - Add advanced filtering options to help users narrow down restaurant choices based on criteria such as 
       rating, cuisine type, delivery time, cost for two, etc.
 
-6. **Add Toasts**:
+5. **Add Toasts**:
     - Add toast to wherever there is requirement for alert or message is necessary for user
 
 ## Technologies Used
