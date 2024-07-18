@@ -1,10 +1,10 @@
 
 import React from 'react'
 
-const RestaurantCardSkeleton = () => {
+const RestaurantCardSkeleton = ({showHeading}) => {
   return (
     <div className="">
-       <div className="flex w-1/3 h-10 shimmer flex-shrink-0 rounded-lg my-5 bg-gray-300"></div>
+       {showHeading && <div className="flex w-1/3 h-10 shimmer flex-shrink-0 rounded-lg my-5 bg-gray-300"></div>}
         <div className='flex flex-wrap'>
           {Array.from({ length: 8 }).map((_, index) => (
               // <div key={index} className="w-40 h-40 bg-gray-300 m-5 rounded-lg shimmer flex-shrink-0"></div>

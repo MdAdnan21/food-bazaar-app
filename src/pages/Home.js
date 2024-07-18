@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 const Home = () => {
   const [searchText, setsearchText] = useState("");
   const [endReached, setEndReached] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const dispatch = useDispatch();
 
   const { restaurants, filteredRestaurants, isLoading, error, carouselDishData, carouselResData, updateRestaurants} = useResData();
@@ -44,6 +45,7 @@ const Home = () => {
   };
 
   const updateApi = async () => {
+    setLoadingMore(true);
     try {
       const response = await fetch(RESTAURANT_UPDATE_API, {
         method: "POST",
@@ -56,10 +58,12 @@ const Home = () => {
       const data = await response.json();
       const newRestaurants = data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
       updateRestaurants(newRestaurants)
-      console.log(restaurants)
+      // console.log(restaurants)
 
     } catch (error) {
       console.error("Failed to fetch data:", error);
+    } finally {
+      setLoadingMore(false);
     }
   };
 
@@ -97,7 +101,7 @@ const Home = () => {
       </h1>
 
       {isLoading ? (
-        <RestaurantCardSkeleton /> 
+        <RestaurantCardSkeleton showHeading={loadingMore}  /> 
         ) : (
           !filteredRestaurants?.data?.length ? (
             <Unserviceable />
@@ -111,6 +115,7 @@ const Home = () => {
                   <RestaurantCard resData={restaurant} />
                 </Link>
               ))}
+              {loadingMore && <RestaurantCardSkeleton showHeading={false} />}
             </div>
           )
         )}
