@@ -12,7 +12,7 @@ const MenuList = ({data, showDescription}) => {
   const [quantity, setQuantity] = useState(getQuantity(id))
   
   const addToCart = () => {
-    const itemData = {id, name, price: price/100 || defaultPrice/100, imageId, itemAttribute, description};
+    const itemData = {id, name, price: price || defaultPrice, imageId, itemAttribute, description};
     addItemToCart(itemData);
   };
 
@@ -48,7 +48,7 @@ const MenuList = ({data, showDescription}) => {
           <span className="mr-2">{itemAttribute?.vegClassifier === 'VEG'? <Veg /> : <NonVeg />}</span>
           <span className="py-2 text-md font-semibold">{name}</span>
         </div>
-        <span className="font-medium">{" "} ₹{price ? price: defaultPrice}</span>
+        <span className="font-medium">{" "} ₹{price ? price/100: defaultPrice/100}</span>
         {showDescription && 
           <div>
             <p className="text-sm text-gray-500 py-3">{serves}</p>

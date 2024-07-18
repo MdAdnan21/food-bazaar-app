@@ -29,7 +29,7 @@ const useCart = () => {
 
   const getQuantity = (id) => {
     const item = items.find((item) => item.id === id);
-    return item ? item.quantity : 0;
+    return item ? item?.quantity : 0;
   };
 
   return { restaurant, items, setRestaurantData, addItemToCart, removeItemFromCart, getQuantity, totalItems, totalPrice, billingDetails };

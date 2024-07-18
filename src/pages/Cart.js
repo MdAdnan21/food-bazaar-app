@@ -11,7 +11,7 @@ const Cart = () => {
   const [showItem, setShowItem] = useState(true)
   const {items, restaurant, totalPrice, totalItems, billingDetails} = useCart() 
   console.log("items: ", items)
-  if (_.isEmpty(restaurant)){
+  if (totalItems===0){
     return (
       <div className='mt-[3%] mb-[5%] mx-[5%]'>
         <div className='flex flex-col justify-center items-center'>

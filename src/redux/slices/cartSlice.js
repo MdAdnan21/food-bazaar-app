@@ -14,12 +14,12 @@ const calculateTotals = (items) => {
   let totalPrice = 0;
   const billingDetails = items.map(item => {
     totalItems += item.quantity;
-    const itemTotalPrice = item.price * item.quantity;
+    const itemTotalPrice = item.price/100 * item.quantity;
     totalPrice += itemTotalPrice;
     return {
       dishName: item.name,
       times: item.quantity,
-      price: item.price,
+      price: item.price/100,
       totalPrice: itemTotalPrice,
     };
   });
