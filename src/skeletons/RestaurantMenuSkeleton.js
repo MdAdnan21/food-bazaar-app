@@ -17,13 +17,33 @@ const RestaurantMenuSkeleton = () => {
       </div>
       <div className="flex flex-wrap">
         {Array.from({ length: 8 }).map((_, index) => (
-          <div key={index} className=" w-10/12 tablet:8/12 desktop:w-7/12 mx-auto flex flex-col p-5">
-            <div className="mb-5 h-10 bg-gray-300  shimmer rounded-lg"></div>
-            <div className="flex flex-wrap lg:flex-nowrap">
+          <div key={index} className=" w-10/12 tablet:8/12 desktop:w-7/12 mx-auto flex flex-col my-5">
+            <div className="mb-5 h-12 bg-gray-300  shimmer rounded-lg"></div>
+            <div className="flex flex-wrap lg:flex-nowrap shadow-lg my-5">
               {Array.from({ length: 4 }).map((_, idx) => (
-                <div key={idx} className="w-full lg:w-1/4 p-2">
-                  <div className="h-40 bg-gray-300 shimmer rounded-lg mb-2"></div>
-                  <div className='h-1 my-5 bg-gray-300 shimmer'></div>
+                <div key={idx} className="w-full lg:w-1/4 p-5">
+                  <div className="px-2 py-3 mx-3 border-gray-300 border-b flex flex-wrap justify-center">
+                    <div className="mobile:w-9/12 flex flex-col justify-between h-full">
+                        <div className="flex items-center">
+                        <div className="py-2 text-md font-semibold w-2/4 h-6 shimmer bg-gray-300 rounded"></div>
+                        </div>
+                        <div className="font-medium w-1/6 h-6 shimmer bg-gray-300 rounded my-2"></div>
+                        <div>
+                            <div className="text-sm text-gray-500 py-3 w-full h-5 shimmer bg-gray-300 rounded"></div>
+                            <div className="text-sm text-gray-500 pb-3 w-full h-5 shimmer bg-gray-300 rounded"></div>
+                        </div>
+                    </div>
+                    <div className="mobile:w-3/12 relative flex items-end justify-center">
+                        <div className="absolute my-3">
+                        <div className="flex items-center bg-white shadow-lg rounded-lg font-semibold text-md text-green-600">
+                            <div className="py-1 px-7 shimmer bg-gray-300 rounded-lg"></div>
+                        </div>
+                        </div>
+                        <div className="w-40 h-40">
+                        <div className="w-full h-full shimmer rounded-lg bg-gray-300"></div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
               ))}
             </div>
