@@ -12,7 +12,7 @@ export const getRatingColorClass = (rating) => {
 
 export const normalizeItemData = (data) => {
   if (data?.card?.info) {
-    return data.card.info;
+    return data?.card?.info;
   }
   return data;
 };
