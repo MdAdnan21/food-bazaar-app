@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { CDN_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
 import RestaurantCategory from "../components/RestaurantCategory";
-import RestaurantCardSkeleton from "../skeletons/RestaurantCardSkeleton";
 import useResMenuData from "../hooks/useResMenuData";
 import { getRatingColorClass } from "../utils/miscellaneous";
 import { Rating, Time, Location } from "../utils/Icons";
 import useCart from "../hooks/useCart";
+import RestaurantMenuSkeleton from "../skeletons/RestaurantMenuSkeleton";
 
 
 const RestaurantMenu = () => {
@@ -20,7 +20,7 @@ const RestaurantMenu = () => {
   console.log("menu: ",menu)
   // console.log("Cart Res: ", restaurant)
   
-  if (isLoading) return <RestaurantCardSkeleton />;
+  if (isLoading) return <RestaurantMenuSkeleton />;
 
   if (error) return <h1>Error: {error}</h1>;
 

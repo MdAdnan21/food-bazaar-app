@@ -24,10 +24,10 @@ const Cart = () => {
 
   const {  name, avgRating, avgRatingString, areaName, city, cloudinaryImageId } = restaurant
   return (
-    <div className='mt-[3%] mb-[5%] mx-5 flex flex-wrap justify-center'>
-      <div className='w-full flex justify-between items-start'>
+    <div className='mt-[3%] mb-[5%] mx-5 flex justify-center'>
+      <div className='w-full flex justify-center flex-wrap-reverse tablet:flex-nowrap tablet:justify-between items-start'>
         <div className='w-full flex flex-col justify-between items-start'>
-          <div className="my-3 mx-auto p-5 flex w-10/12 tablet:8/12 desktop:w-5/12 shadow-lg rounded-lg">
+          <div className="my-3 mx-auto p-5 flex flex-wrap w-10/12 tablet:8/12 desktop:w-6/12 shadow-lg rounded-lg">
             <div className="m-5 text-left flex flex-col w-1/2">
               <h1 className="font-bold text-2xl my-3">{name}</h1>
               <p className={`mt-1 mb-2 pt-[1px] pb-[2px] px-[6px] w-16 inline-flex items-center max-w-fit ${getRatingColorClass(avgRating)} rounded-lg text-white items-baseline font-semibold`}>{avgRatingString === "--" ? '4.0' : avgRatingString} <Rating /></p>
@@ -46,8 +46,8 @@ const Cart = () => {
               <span className="mx-10 font-bold">Items in Cart ({totalItems})</span>
               {showItem ? <UpArrow /> : <DownArrow />}
             </div>
-            {showItem ? <ItemList item={items} visible={true} showDescription={false} /> : 
-              <ItemList item={items} visible={false} showDescription={false} />}  
+            {showItem ? <ItemList item={items} visible={true} showDescription={true} /> : 
+              <ItemList item={items} visible={false} showDescription={true} />}  
               {/* {showItem ? <ItemList item={data.itemCards} visible={true} /> : <ItemList item={data.itemCards} visible={false} />} */}
           </div>
         </div>

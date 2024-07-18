@@ -42,8 +42,8 @@ const MenuList = ({data, showDescription}) => {
   }
 
   return (
-    <div className="px-2 py-3 mx-3 my-5 border-gray-300 border-b flex justify-between">
-      <div className="w-9/12 flex flex-col justify-between h-full">
+    <div className="px-2 py-3 mx-3 my-5 border-gray-300 border-b flex flex-wrap justify-center">
+      <div className="mobile:w-9/12 flex flex-col justify-between h-full">
         <div className="flex items-center">
           <span className="mr-2">{itemAttribute?.vegClassifier === 'VEG'? <Veg /> : <NonVeg />}</span>
           <span className="py-2 text-md font-semibold">{name}</span>
@@ -55,7 +55,7 @@ const MenuList = ({data, showDescription}) => {
             <p className="text-sm text-gray-500 pb-3">{details}</p>
           </div>}
       </div>
-      <div className="w-3/12 relative flex items-end justify-center">
+      <div className="mobile:w-3/12 relative flex items-end justify-center">
         <div className="absolute my-3">
           <div
             className="flex items-center bg-white shadow-lg rounded-lg font-semibold text-md text-green-600 ">
