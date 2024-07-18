@@ -49,6 +49,13 @@ const resDataSlice = createSlice({
         filtered: state.filteredRestaurants.filtered,
       };
     },
+    addRestaurants: (state, action) => {
+      state.restaurants = [...state.restaurants, ...action.payload];
+      state.filteredRestaurants = {
+        data: [...state.restaurants],
+        filtered: false,
+      };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -84,6 +91,6 @@ const resDataSlice = createSlice({
   },
 });
 
-export const { filterRestaurants, searchRestaurants } = resDataSlice.actions;
+export const { filterRestaurants, searchRestaurants, addRestaurants } = resDataSlice.actions;
 
 export default resDataSlice.reducer;

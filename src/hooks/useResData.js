@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRestaurants } from '../redux/slices/resDataSlice';
+import { addRestaurants, fetchRestaurants } from '../redux/slices/resDataSlice';
 
 const useResData = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,11 @@ const useResData = () => {
     dispatch(fetchRestaurants());
   }, [dispatch]);
 
-  return { restaurants, filteredRestaurants, isLoading, error, carouselDishData, carouselResData };
+  const updateRestaurants = (newRestaurants) => {
+    dispatch(addRestaurants(newRestaurants));
+  };
+
+  return { restaurants, filteredRestaurants, isLoading, error, carouselDishData, carouselResData, updateRestaurants };
 };
 
 export default useResData;
