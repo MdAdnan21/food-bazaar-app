@@ -50,7 +50,20 @@ const cartSlice = createSlice({
     },
     removeItem: (state, action) => {
       const id = action.payload;
-      state.items = state.items.filter((item) => item.id !== id);
+      const existingItem = state.items.find((item) => item.id === id);
+
+      if (existingItem) {
+        if (existingItem.quantity > 1) {
+          existingItem.quantity -= 1;
+        } else {
+          state.items = state.items.filter((item) => item.id !== id);
+        }
+
+        const totals = calculateTotals(state.items);
+        state.totalItems = totals.totalItems;
+        state.billingDetails = totals.billingDetails;
+        state.totalPrice = totals.totalPrice;
+      }
     },
   },
 });

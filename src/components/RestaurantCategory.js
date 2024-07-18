@@ -14,7 +14,9 @@ const RestaurantCategory = ({data, showItem, setShowItem}) => {
             <span className="mx-10 font-bold">{data.title} ({data?.itemCards?.length})</span>
             {showItem ? <UpArrow /> : <DownArrow />}
         </div>
-        {showItem ? <ItemList item={data.itemCards} visible={true} /> : <ItemList item={data.itemCards} visible={false} />}
+        {showItem ? <ItemList item={data.itemCards} visible={true} showDescription={true} /> : 
+            <ItemList item={data.itemCards} visible={false} showDescription={true} 
+        />}
     </div>      
   )
 }

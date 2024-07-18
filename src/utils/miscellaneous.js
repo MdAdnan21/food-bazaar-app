@@ -9,3 +9,10 @@ export const getRatingColorClass = (rating) => {
       return 'bg-red-500';
     }
 }
+
+export const normalizeItemData = (data) => {
+  if (data?.card?.info) {
+    return data.card.info;
+  }
+  return data;
+};
