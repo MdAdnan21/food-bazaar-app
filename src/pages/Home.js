@@ -6,6 +6,7 @@ import Carousel from "../components/Carousel";
 import RestaurantCardSkeleton from "../skeletons/RestaurantCardSkeleton";
 import useResData from "../hooks/useResData";
 import unserviceable from "../images/unserviceable.png";
+import Unserviceable from "../components/Unserviceable";
 
 const Home = () => {
   const [searchText, setsearchText] = useState("");
@@ -26,14 +27,6 @@ const Home = () => {
         Looks like you are offline!! Please check your internet connection...
       </h1>
     );
-
-  if (!restaurants?.length) {
-    return (
-      <div className="mt-[3%] mb-[5%] mx-[5%] flex justify-center">
-        <img className="shadow-lg" src={unserviceable} alt="unserviceable" />
-      </div>
-    );
-  }
 
   // const dispatch = useDispatch();
   // const { restaurants, filteredRestaurants, isLoading, error, carouselDishData, carouselResData } = useResData();
@@ -60,19 +53,23 @@ const Home = () => {
       </h1>
 
       {isLoading ? (
-        <RestaurantCardSkeleton />
-      ) : (
-        <div className="flex flex-wrap my-13">
-          {filteredRestaurants?.data?.map((restaurant) => (
-            <Link
-              key={restaurant?.info?.id}
-              to={"/restaurant/" + restaurant?.info?.id}
-            >
-              <RestaurantCard resData={restaurant} />
-            </Link>
-          ))}
-        </div>
-      )}
+        <RestaurantCardSkeleton /> 
+        ) : (
+          !filteredRestaurants?.data?.length ? (
+            <Unserviceable />
+          ) : (
+            <div className="flex flex-wrap my-13">
+              {filteredRestaurants?.data?.map((restaurant) => (
+                <Link
+                  key={restaurant?.info?.id}
+                  to={"/restaurant/" + restaurant?.info?.id}
+                >
+                  <RestaurantCard resData={restaurant} />
+                </Link>
+              ))}
+            </div>
+          )
+        )}
     </div>
   );
 };
