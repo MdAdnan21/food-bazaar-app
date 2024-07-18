@@ -10,21 +10,25 @@ The Food App is a web application that allows users to browse restaurants, view 
 
 1. **Responsive Design**: 
     - The application is fully responsive and adapts to different screen sizes using Tailwind CSS.
+
 2. **Restaurant Listing**: 
     - Browse a list of restaurants with images, names, cuisines, delivery time, and cost for two.
+
 3. **Hover Animations**: 
     - Smooth hover animations and dynamic styles enhance the user experience.
+
 4. **Carousel**:
     - Add a carousel to display restaurant images form the provied data from swiggy apis. Implemented scrolling 
       through button click with useRef hook and custom event listeners on scroll. 
+
 5. **Mock Backend**
     - Created a mock swiggy backend to bypass swiggy's cors policy.
+
 6. **Cart Functionality**: 
     - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will 
       include features like updating quantities, viewing total costs, and proceeding to checkout.
  
 ## Upcoming Features
-
 
 1. **Infinite Scroll**: 
     - Implement infinite scroll using the Swiggy update API to dynamically load more restaurants as users 
