@@ -13,7 +13,7 @@ const Cart = () => {
   console.log("items: ", items)
   if (totalItems===0){
     return (
-      <div className='mt-[3%] mb-[5%] mx-[5%] min-h-[75vh] fade-in'>
+      <div className='mt-[3%] mb-[5%] mx-[5%] min-h-[80vh] fade-in'>
         <div className='flex flex-col justify-center items-center'>
           <h1 className='my-2 text-4xl font-semibold text-default text-center'>Your Cart is Empty!</h1>
           <img className='' src={EmptyCart} alt="empty cart" />
