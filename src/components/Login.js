@@ -1,7 +1,6 @@
 // src/components/Login.js
 
 import React from 'react';
-import InputField from './inputField';
 
 const Login = ({ onSwitch }) => {
   return (
