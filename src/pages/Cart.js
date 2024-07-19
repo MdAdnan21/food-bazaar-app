@@ -51,7 +51,8 @@ const Cart = () => {
               {/* {showItem ? <ItemList item={data.itemCards} visible={true} /> : <ItemList item={data.itemCards} visible={false} />} */}
           </div>
         </div>
-        <div className='min-w-fit my-3 mx-10 p-5 flex flex-col shadow-lg rounded-lg'>
+        
+        <div className='my-3 ml-5 mr-10 p-5 flex flex-col shadow-lg rounded-lg'>
           <h1 className='m-3 p-2 text-3xl font-bold text-default'>Oder Summary</h1>
           <ul className='mx-3 p-2'>
             {billingDetails?.map(({ dishName, times, price, totalPrice }, index) => (
