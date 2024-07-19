@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faChevronDown, faChevronUp, faStar, faCartShopping, faBars, faX, faXmark, faArrowRight, faArrowLeft, faLocation, faLocationPin, faLocationDot, faLeaf, faDrumstickBite, faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faChevronDown, faChevronUp, faStar, faCartShopping, faBars, faX, faXmark, faArrowRight, faArrowLeft, faLocation, faLocationPin, faLocationDot, faLeaf, faDrumstickBite, faPlus, faMinus, faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 
 export const CartIcon = () => <FontAwesomeIcon className='cursor-pointer group-hover:text-[#fe8b00] text-xl' icon={faShoppingCart} />;
@@ -16,7 +16,7 @@ export const Location = ({style}) => <FontAwesomeIcon className={`${style}`} ico
 
 export const Bars = () => <FontAwesomeIcon className='tablet:hidden cursor-pointer p-3 hover:text-[#fe8b00] transition duration-300 transform hover:scale-105 border-gray-200 border-1 shadow-lg rounded-lg' icon={faBars} />
 
-export const Close = () => <FontAwesomeIcon className='tablet:hidden cursor-pointer p-3 hover:text-[#fe8b00] transition duration-300 transform hover:scale-105 border-gray-200 border-1 shadow-lg rounded-lg' icon={faXmark} />
+export const Close = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faXmark} />
 
 export const ArrowLeft = () => <FontAwesomeIcon icon={faArrowLeft} />
 
@@ -29,3 +29,7 @@ export const NonVeg = () => <FontAwesomeIcon className='text-orange-600' icon={f
 export const Plus = () => <FontAwesomeIcon className='text-green-500 mx-3' icon={faPlus} />
 
 export const Minus = () => <FontAwesomeIcon className='text-red-600 mx-3' icon={faMinus} />
+
+export const Eye = () => <FontAwesomeIcon icon={faEye} />
+
+export const EyeSlash = () => <FontAwesomeIcon icon={faEyeSlash} />
