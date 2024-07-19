@@ -11,14 +11,18 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import SideMenu from "./components/SideMenu";
 
 const Grocery = lazy(() => import("./pages/Grocery"))
 
 const App = () => {
 
+  const [showSideMenu, setShowSideMenu] = useState(false);
+
   return <Provider store={store}>
     <div className="App">
-      <Header />
+      <Header sideMenu={() => setShowSideMenu(true)} />
+      <SideMenu isOpen={showSideMenu} onClose={() => setShowSideMenu(false)}/>
       <Outlet />
       <Footer />
     </div> 
@@ -52,7 +56,8 @@ const appRouter=createBrowserRouter([
       {
         path: '/grocery',
         element: (<Suspense fallback={<h1>Loading...</h1>} ><Grocery /></Suspense>),
-      }
+      },
+
     ],
     errorElement: <Error />
   },
