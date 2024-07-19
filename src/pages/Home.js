@@ -6,14 +6,10 @@ import Carousel from "../components/Carousel";
 import RestaurantCardSkeleton from "../skeletons/RestaurantCardSkeleton";
 import useResData from "../hooks/useResData";
 import Unserviceable from "../components/Unserviceable";
-import { RESTAURANT_UPDATE_API } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
 
 const Home = () => {
   const [searchText, setsearchText] = useState("");
-  const [endReached, setEndReached] = useState(false);
-  const [loadingMore, setLoadingMore] = useState(false);
-  const dispatch = useDispatch();
 
   const { restaurants, filteredRestaurants, isLoading, error, carouselDishData, carouselResData, updateRestaurants} = useResData();
 
@@ -23,49 +19,7 @@ const Home = () => {
   // console.log("CarouselDishData", carouselDishData)
   // console.log("CarouselResData", carouselResData)
 
-  useEffect(() => {
-
-    window.addEventListener("scroll", handleScroll);
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [restaurants, endReached]);
-
-  const handleScroll = () => {
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement || document.body;
-
-    if (scrollTop + clientHeight >= scrollHeight - 10 && !endReached) {
-      console.log("End reached");
-      updateApi()
-      setEndReached(true);
-    } else if (scrollTop + clientHeight < scrollHeight - 10 && endReached) {
-      setEndReached(false);
-    }
-  };
-
-  const updateApi = async () => {
-    setLoadingMore(true);
-    try {
-      const response = await fetch(RESTAURANT_UPDATE_API, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({startIndex: restaurants.length+1}),
-      });
-
-      const data = await response.json();
-      const newRestaurants = data?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-      updateRestaurants(newRestaurants)
-      // console.log(restaurants)
-
-    } catch (error) {
-      console.error("Failed to fetch data:", error);
-    } finally {
-      setLoadingMore(false);
-    }
-  };
+  const { loadingMore } = useInfiniteScroll(restaurants);
 
   const onlineStatus = useOnlineStatus();
 
