@@ -1,5 +1,3 @@
-// src/components/Login.js
-
 import React from 'react';
 
 const Login = ({ onSwitch }) => {
