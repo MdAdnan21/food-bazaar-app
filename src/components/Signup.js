@@ -1,8 +1,13 @@
-// src/components/Signup.js
-
 import React from 'react';
+import { useSignupData } from '../hooks/useUser';
+import InputField from './inputField';
+import FileUpload from './FileUpload';
+import ToggleButton from './ToggleButton';
 
 const Signup = ({ onSwitch }) => {
+
+  const [signupData, updateSignup] = useSignupData();
+
   return (
     <div className="p-4">
       <h2 className="text-3xl font-bold my-2">Sign Up</h2>
@@ -10,20 +15,39 @@ const Signup = ({ onSwitch }) => {
         or <span className="text-default absolute right-2 cursor-pointer text-md font-medium  underline-animation px-3 py-1" onClick={onSwitch}>Login Now!</span>
       </p>
       <form>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="password" />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
-          <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="password" />
-        </div>
+        <InputField 
+          label={'Full Name'}
+          type={'text'}
+          value={signupData?.fullName}
+          onUpdate={(value) => updateSignup({ fullName: value })}
+        />
+        <InputField 
+          label={'Email'}
+          type={'email'}
+          value={signupData?.email}
+          onUpdate={(value) => updateSignup({ email: value })}
+        />
+        <InputField 
+          label={'Password'}
+          type={'password'}
+          value={signupData?.password}
+          onUpdate={(value) => updateSignup({ password: value })}
+        />
+        <InputField 
+          label={'Confirm Password'}
+          type={'password'}
+          value={signupData?.confirmPassword}
+          onUpdate={(value) => updateSignup({ confirmPassword: value })}
+        />
+        <FileUpload isDisabled={false} onUpdate={updateSignup} />
+        <ToggleButton
+          toggle1={"Admin"}
+          toggle2={"User"}
+          onUpdate={updateSignup}
+          isDisabled={false}
+        />
         <button className="shadow-lg bg-[#fe8b00] text-white text-lg font-semibold px-4 py-2 rounded-md transition duration-300 transform hover:bg-[#e57c00] hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
-            Signup
+          Signup
         </button>
       </form>
     </div>

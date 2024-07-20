@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Close } from "../utils/Icons";
-import { Outlet } from "react-router-dom";
 import Login from "./Login";
 import Signup from "./Signup";
 

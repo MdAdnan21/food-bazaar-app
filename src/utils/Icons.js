@@ -30,6 +30,6 @@ export const Plus = () => <FontAwesomeIcon className='text-green-500 mx-3' icon=
 
 export const Minus = () => <FontAwesomeIcon className='text-red-600 mx-3' icon={faMinus} />
 
-export const Eye = () => <FontAwesomeIcon icon={faEye} />
+export const Eye = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faEye} />
 
-export const EyeSlash = () => <FontAwesomeIcon icon={faEyeSlash} />
+export const EyeSlash = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faEyeSlash} />

@@ -53,7 +53,7 @@ const Cart = () => {
         </div>
         
         <div className='my-3 ml-5 mr-10 p-5 flex flex-col shadow-lg rounded-lg'>
-          <h1 className='m-3 p-2 text-3xl font-bold text-default'>Oder Summary</h1>
+          <h1 className='m-3 p-2 text-3xl font-bold text-default whitespace-nowrap'>Order Summary</h1>
           <ul className='mx-3 p-2'>
             {billingDetails?.map(({ dishName, times, price, totalPrice }, index) => (
               <li key={index} className="flex items-center mt-2 mb-5 text-lg text-gray-500">
