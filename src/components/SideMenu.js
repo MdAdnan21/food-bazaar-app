@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Close } from "../utils/Icons";
 import Login from "./Login";
 import Signup from "./Signup";
+import { useLoadingUser, useUserData } from "../hooks/useUser";
+import UserMenu from "./UserMenu";
 
 const SideMenu = ({ isOpen, onClose }) => {
   const handleOverlayClick = (e) => {
@@ -11,6 +13,8 @@ const SideMenu = ({ isOpen, onClose }) => {
   };
 
   const [isLogin, setIsLogin] = useState(true);
+  const { loadingUserData } = useLoadingUser()
+  const {userData} = useUserData()
 
   return (
     <>
@@ -28,7 +32,9 @@ const SideMenu = ({ isOpen, onClose }) => {
           >
             <Close style={'cursor-pointer p-3 hover:text-[#fe8b00] transition duration-300 transform hover:scale-105 border-gray-200 border-1 shadow-lg rounded-lg'} />
           </button>
-          {isLogin ? (
+          {loadingUserData || userData ? (
+            <UserMenu userData={userData} />
+          ) : isLogin ? (
             <Login onSwitch={() => setIsLogin(!isLogin)} />
           ) : (
             <Signup onSwitch={() => setIsLogin(!isLogin)} />

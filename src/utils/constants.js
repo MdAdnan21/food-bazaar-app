@@ -9,3 +9,7 @@ export const RESTAURANT_MENU_API = 'https://food-app.deepanshu-sahu-projects.liv
 export const RESTAURANT_UPDATE_API = 'https://food-app.deepanshu-sahu-projects.live/api/update'
 
 export const GITHUB_USER_API = 'https://api.github.com/users/dee077'
+
+export const DOMAIN = 'https://food-app.deepanshu-sahu-projects.live'
+
+export const DEFAULT_PROFILE = 'https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png'

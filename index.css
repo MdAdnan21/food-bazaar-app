@@ -65,3 +65,19 @@
 .fade-in {
   animation: fadeIn 2s ease-in-out;
 }
+
+/* Spinner CSS */
+.spinner {
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #fe8b00; 
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

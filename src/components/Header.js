@@ -5,6 +5,8 @@ import { Bars, CartIcon, Close } from "../utils/Icons";
 import Logo from "../images/Logo.png"
 import SideMenu from "./SideMenu";
 import useCart from "../hooks/useCart";
+import { useUserData } from "../hooks/useUser";
+import { DEFAULT_PROFILE } from "../utils/constants";
 
 
 const Header = ({sideMenu}) => {
@@ -14,6 +16,7 @@ const Header = ({sideMenu}) => {
 
   const onlineStatus = useOnlineStatus()
   const { totalItems } = useCart()
+  const { userData } = useUserData()
 
   return (
     <div className="flex justify-between flex-col mx-5 shadow-lg transition duration-1000 ease-out">
@@ -45,12 +48,20 @@ const Header = ({sideMenu}) => {
               </span>
             )}
           </Link>
-          <button
-            onClick={sideMenu}
-            className="mx-5 shadow-lg bg-[#fe8b00] text-white font-medium px-4 py-2 rounded-md transition duration-300 transform hover:bg-[#e57c00] hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform"
-          >
-            Sign In
-          </button>
+          {userData ? (
+            <button
+              onClick={sideMenu}
+              className="w-12 h-12 rounded-full overflow-hidden border border-gray-300 flex items-center justify-center bg-gray-200">
+              <img src={DEFAULT_PROFILE} alt="User" className="w-full h-full object-cover" />
+            </button>
+          ) : (
+            <button
+              onClick={sideMenu}
+              className="mx-5 shadow-lg bg-[#fe8b00] text-white font-medium px-4 py-2 rounded-md transition duration-300 transform hover:bg-[#e57c00] hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform"
+            >
+              Sign In
+            </button>
+          )}
           <button className="mx-4 w-12"  onClick={() => { setShowNavItems(!showNavItems)} }>
             {showNavItems ? <Close style={'tablet:hidden cursor-pointer p-3 hover:text-[#fe8b00] transition duration-300 transform hover:scale-105 border-gray-200 border-1 shadow-lg rounded-lg'} /> : 
               <Bars /> }

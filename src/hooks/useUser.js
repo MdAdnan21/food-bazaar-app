@@ -1,6 +1,6 @@
 // useUser.js
 import { useSelector, useDispatch } from 'react-redux';
-import { updateSignupData, updateLoginData, setUserData, logOut } from '../redux/slices/userSlice';
+import { updateSignupData, updateLoginData, setUserData, logOut, setShowMenu, setLoadingUser } from '../redux/slices/userSlice';
 
 const useSignupData = () => {
   const dispatch = useDispatch();
@@ -28,6 +28,7 @@ const useUserData = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user.userData);
 
+
   const setUser = (data) => {
     dispatch(setUserData(data));
   };
@@ -36,7 +37,29 @@ const useUserData = () => {
     dispatch(logOut());
   };
 
-  return [userData, setUser, logout];
+  return {userData, setUser, logout};
 };
 
-export { useSignupData, useLoginData, useUserData };
+const useShowSideMenu = () => {
+  const dispatch = useDispatch();
+  const showSideMenu = useSelector((state) => state.user.showMenu);
+
+  const setShowSideMenu = (data) => {
+    dispatch(setShowMenu(data));
+  };
+
+  return {showSideMenu, setShowSideMenu}
+}
+
+const useLoadingUser = () => {
+  const dispatch = useDispatch();
+  const loadingUserData = useSelector((state) => state.user.loadingUser);
+
+  const setLoadingUserData = (data) => {
+    dispatch(setLoadingUser(data));
+  };
+
+  return {loadingUserData, setLoadingUserData}
+}
+
+export { useSignupData, useLoginData, useUserData, useShowSideMenu, useLoadingUser };

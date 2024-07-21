@@ -1,7 +1,6 @@
-// userSlice.js
 import { createSlice } from '@reduxjs/toolkit';
+import { DEFAULT_PROFILE } from '../../utils/constants';
 
-const DEFAULT_PROFILE = 'path/to/default/profile/image';
 
 const initialState = {
   signupData: {
@@ -9,15 +8,17 @@ const initialState = {
     email: "",
     password: "",
     confirmPassword: "",
-    profileImg: null,
-    profileUrl: DEFAULT_PROFILE,
+    imageId: null,
+    defaultImageUrl: DEFAULT_PROFILE,
     userType: "User",
   },
   loginData: {
-    email: "",
-    password: "",
+    email: "test1@email.com",
+    password: "1234abc",
   },
   userData: null,
+  showMenu: false,
+  loadingUser: false,
 };
 
 const userSlice = createSlice({
@@ -43,9 +44,15 @@ const userSlice = createSlice({
       sessionStorage.removeItem('userData');
       state.userData = null;
     },
+    setShowMenu(state, action) {
+      state.showMenu = action.payload
+    },
+    setLoadingUser(state, action) {
+      state.loadingUser = action.payload
+    }
   },
 });
 
-export const { updateSignupData, updateLoginData, setUserData, logOut } = userSlice.actions;
+export const { updateSignupData, updateLoginData, setUserData, logOut, setShowMenu, setLoadingUser } = userSlice.actions;
 
 export default userSlice.reducer;

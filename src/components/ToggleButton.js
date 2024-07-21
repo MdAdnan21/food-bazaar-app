@@ -7,7 +7,7 @@ const ToggleButton = ({ toggle1, toggle2 , onUpdate, isDisabled}) => {
     onUpdate({userType: isChecked ? "User" : "Admin"});
   };
   return (
-    <label className={`inline-flex w-full mt-3 mb-5 items-center ${isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+    <label className={`inline-flex w-full mt-3 mb-6 items-center ${isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
       <input
         type="checkbox"
         value=""
@@ -21,9 +21,9 @@ const ToggleButton = ({ toggle1, toggle2 , onUpdate, isDisabled}) => {
           rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full
           peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] 
           after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all 
-          peer-checked:bg-gray-200`}
+          peer-checked:bg-default`}
       ></div>
-      <span className={`ms-3 text-gray-700 text-md font-medium  ${isDisabled ? 'pointer-events-none text-gray-400' : 'text-gray-700'}`}>
+      <span className={`ms-3 text-md font-medium  ${isDisabled && 'pointer-events-none text-gray-400'} ${isChecked && 'text-default'}`}>
         {isChecked ? toggle1 : toggle2}
       </span>
     </label>

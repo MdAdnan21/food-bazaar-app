@@ -12,21 +12,22 @@ import Cart from "./pages/Cart";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import SideMenu from "./components/SideMenu";
+import { useShowSideMenu } from "./hooks/useUser";
+import { ToastContainer } from 'react-toastify';
 
 const Grocery = lazy(() => import("./pages/Grocery"))
 
 const App = () => {
 
-  const [showSideMenu, setShowSideMenu] = useState(false);
+  const {showSideMenu, setShowSideMenu} = useShowSideMenu()
 
-  return <Provider store={store}>
+  return ( 
     <div className="App">
       <Header sideMenu={() => setShowSideMenu(true)} />
       <SideMenu isOpen={showSideMenu} onClose={() => setShowSideMenu(false)}/>
       <Outlet />
       <Footer />
-    </div> 
-    </Provider>
+    </div>)
 };
 
 const appRouter=createBrowserRouter([
@@ -65,4 +66,9 @@ const appRouter=createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-root.render(<RouterProvider router={appRouter} />)
+root.render(
+  <Provider store={store}>
+    <RouterProvider router={appRouter} />
+    <ToastContainer />
+  </Provider>
+)
