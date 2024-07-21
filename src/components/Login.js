@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoginData } from '../hooks/useUser';
-import InputField from './inputField';
+import InputField from './InputField';
 import useAuth from '../hooks/useAuth';
 
 const Login = ({ onSwitch }) => {
