@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSignupData } from '../hooks/useUser';
-import InputField from './inputField';
+import InputField from './InputField';
 import FileUpload from './FileUpload';
 import ToggleButton from './ToggleButton';
 import useAuth from '../hooks/useAuth';
