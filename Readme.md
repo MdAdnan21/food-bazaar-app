@@ -24,31 +24,36 @@ The Food App is a web application that allows users to browse restaurants, view 
 5. **Mock Backend**
     - Created a mock swiggy backend to bypass swiggy's cors policy.
 
-6. **Cart Functionality**: 
-    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will 
-      include features like updating quantities, viewing total costs, and proceeding to checkout.
- 
-## Upcoming Features
-
-1. **Infinite Scroll**: 
+6. **Infinite Scroll**: 
     - Implement infinite scroll using the Swiggy update API to dynamically load more restaurants as users 
       scroll down the page.
 
-2. **User Authentication**: 
-    - Enable user authentication to allow users to create accounts, log in, and manage their profiles. Features 
-      like saving favorite restaurants, viewing order history, and managing account settings.
+7. **User Authentication**: 
+    - Enable user authentication to allow users to create accounts, log in, and manage their profiles. Used 
+     MongoDB in backend to store data and Jwt token for authentication.
 
-3. **Location-Based Restaurant Listing**: 
+8. **Cart Functionality**: 
+    - Enhance the cart functionality to allow users to add, remove, and modify items in their cart. This will 
+      include features like updating quantities, viewing total costs, and proceeding to checkout.
+
+9. **Add Toasts**:
+    - Add toast to wherever there is requirement for alert or message is necessary for user using react     
+      toastify.
+ 
+## Upcoming Features
+
+1. **Location-Based Restaurant Listing**: 
     - Use the user's geographical coordinates (longitude and latitude) to provide a list of nearby restaurants. 
       This feature will leverage location services to ensure users see the most relevant dining options based 
       on their current location.
 
-4. **Additional Filters**: 
+2. **Additional Filters**: 
     - Add advanced filtering options to help users narrow down restaurant choices based on criteria such as 
       rating, cuisine type, delivery time, cost for two, etc.
 
-5. **Add Toasts**:
-    - Add toast to wherever there is requirement for alert or message is necessary for user
+3. **Admin Dashboard**:
+    - To give you a comprehensive overview and quick insights through various metrics and performance indicators and manage data.
+
 
 ## Technologies Used
 
@@ -60,6 +65,9 @@ The Food App is a web application that allows users to browse restaurants, view 
 - **Swiggy Live API** for fetching restaurant data
 - **Parcel Bundler**: For Efficient bundling of the project for development and production.
 - Redux
+- React Toastify
+- MongoDB
+- JWT Token
 
 ## Getting Started
 
