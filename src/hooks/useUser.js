@@ -37,7 +37,16 @@ const useUserData = () => {
     dispatch(logOut());
   };
 
-  return {userData, setUser, logout};
+  const getUserLocal = () => {
+    const userData = sessionStorage.getItem('userData');
+    if (userData) {
+      const user = JSON.parse(userData);
+      return user;
+    }
+    return null
+  }
+
+  return {userData, setUser, logout, getUserLocal};
 };
 
 const useShowSideMenu = () => {

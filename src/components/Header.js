@@ -6,7 +6,7 @@ import Logo from "../images/Logo.png"
 import SideMenu from "./SideMenu";
 import useCart from "../hooks/useCart";
 import { useUserData } from "../hooks/useUser";
-import { DEFAULT_PROFILE } from "../utils/constants";
+import { DEFAULT_PROFILE, DOMAIN } from "../utils/constants";
 
 
 const Header = ({sideMenu}) => {
@@ -16,7 +16,8 @@ const Header = ({sideMenu}) => {
 
   const onlineStatus = useOnlineStatus()
   const { totalItems } = useCart()
-  const { userData } = useUserData()
+  const { getUserLocal } = useUserData()
+  const userData = getUserLocal()
 
   return (
     <div className="flex justify-between flex-col mx-5 shadow-lg transition duration-1000 ease-out">
@@ -51,8 +52,8 @@ const Header = ({sideMenu}) => {
           {userData ? (
             <button
               onClick={sideMenu}
-              className="w-12 h-12 rounded-full overflow-hidden border border-gray-300 flex items-center justify-center bg-gray-200">
-              <img src={DEFAULT_PROFILE} alt="User" className="w-full h-full object-cover" />
+              className="w-14 h-14 mx-5 rounded-full overflow-hidden p-[7px] shadow-xl border-gray-100 flex items-center justify-center transition duration-300 transform hover:scale-110 hover:border-orange-300">
+              <img src={userData?.imageId ? DOMAIN + '/api/uploads/' + userData?.imageId: DEFAULT_PROFILE} alt="User" className="w-full h-full object-cover rounded-full shadow-lg" />
             </button>
           ) : (
             <button

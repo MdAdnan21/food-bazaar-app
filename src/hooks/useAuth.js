@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { BACKEND_URL, DOMAIN } from '../utils/constants';
 import { useSignupData, useLoginData, useUserData, useLoadingUser, useShowSideMenu } from './useUser';
+import useImageUpload from './useImageUpload';
+import { showToast } from '../utils/toastConfig';
 
 const useAuth = () => {
 
@@ -10,17 +11,18 @@ const useAuth = () => {
   const {setUser} = useUserData()
   const { setLoadingUserData } = useLoadingUser()
   const { setShowSideMenu } = useShowSideMenu()
+  const { deleteImage } = useImageUpload();
 
   const validateSignupData = (signupData) => {
     const { fullName, email, password, confirmPassword, imageId, userType } = signupData;
 
     if (!fullName || !email || !password || !confirmPassword) {
-      toast.error("All fields are required");
+      showToast("All fields are required","error")
       return null;
     }
 
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
+      showToast("Passwords do not match", "error");
       return null;
     }
 
@@ -30,38 +32,47 @@ const useAuth = () => {
   const submitSignup = async () => {
     const validatedSignupData = validateSignupData(signupData);
     if(!validatedSignupData) return 
-
+    setLoadingUserData(true)
     try {
-    const response = await fetch(DOMAIN + "/api/auth/signup", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        },
-        body: JSON.stringify(validatedSignupData),
-    });
+      const response = await fetch(DOMAIN + "/api/auth/signup", {
+          method: "POST",
+          headers: {
+          "Content-Type": "application/json",
+          },
+          body: JSON.stringify(validatedSignupData),
+      });
 
-    const data = await response.json();
-    console.log(data)
-    setUser(data)
-    if (response.ok) {
-        const { jwtToken, user } = data;
-        sessionStorage.setItem("userData", JSON.stringify(user));
-        sessionStorage.setItem("jwtToken", jwtToken);
-        //   navigate("/");
-        toast.success("Signup successful!");
-    } else {
-        toast.error(data.message || "Signup failed");
-    }
+      const data = await response.json();
+      console.log(data)
+      if (response.ok) {
+          const { jwtToken, user } = data;
+          sessionStorage.setItem("userData", JSON.stringify(user));
+          sessionStorage.setItem("jwtToken", jwtToken);
+          showToast("Signup successful!");
+          setUser(data)
+          setTimeout(()=>{setLoadingUserData(false)},1000)
+          setTimeout(()=>{setShowSideMenu(false)},1300)
+      } else {
+          showToast(data?.message, "error");
+          setLoadingUserData(false)
+          if(signupData?.imageId){
+            const { success } = await deleteImage();
+          }
+      }
     } catch (error) {
-    toast.error("An error occurred during signup");
-    }
+        showToast("An error occurred during signup", "error");
+        setLoadingUserData(false)
+        if(signupData?.imageId){
+          const { success } = await deleteImage();
+        }
+      }
   };
 
   const validateLoginData = (loginData) => {
     const {email, password} = loginData;
 
     if (!email || !password) {
-      toast.error("All fields are required");
+      showToast("All fields are required", "error");
       return false;
     }
     return true
@@ -81,19 +92,19 @@ const useAuth = () => {
 
       const data = await response.json();
       console.log(data)
-      setUser(data)
-      setLoadingUserData(false)
-      setTimeout(()=>{setShowSideMenu(false)},300)
       if (response.ok) {
         const { jwtToken, user } = data;
         sessionStorage.setItem("userData", JSON.stringify(user));
         sessionStorage.setItem("jwtToken", jwtToken);
-        toast.success("Login successful!");
+        showToast("Login successful!");
+        setUser(data)
+        setTimeout(()=>{setLoadingUserData(false)},1000)
+        setTimeout(()=>{setShowSideMenu(false)},1300)
       } else {
-        toast.error(data.message || "Login failed");
+        showToast(data?.message, "error");
       }
     } catch (error) {
-      toast.error("An error occurred during login");
+      showToast("An error occurred during login", "error");
     }
   };
 

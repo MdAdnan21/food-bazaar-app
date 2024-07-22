@@ -14,7 +14,8 @@ const SideMenu = ({ isOpen, onClose }) => {
 
   const [isLogin, setIsLogin] = useState(true);
   const { loadingUserData } = useLoadingUser()
-  const {userData} = useUserData()
+  const { getUserLocal } = useUserData()
+  const userData = getUserLocal()
 
   return (
     <>

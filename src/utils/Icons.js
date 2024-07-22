@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faChevronDown, faChevronUp, faStar, faCartShopping, faBars, faX, faXmark, faArrowRight, faArrowLeft, faLocation, faLocationPin, faLocationDot, faLeaf, faDrumstickBite, faPlus, faMinus, faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faChevronDown, faChevronUp, faStar, faCartShopping, faBars, faX, faXmark, faArrowRight, faArrowLeft, faLocation, faLocationPin, faLocationDot, faLeaf, faDrumstickBite, faPlus, faMinus, faEye, faEyeSlash, faUser, faGear, faUserGraduate, faGears} from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 
 export const CartIcon = () => <FontAwesomeIcon className='cursor-pointer group-hover:text-[#fe8b00] text-xl' icon={faShoppingCart} />;
@@ -33,3 +33,12 @@ export const Minus = () => <FontAwesomeIcon className='text-red-600 mx-3' icon={
 export const Eye = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faEye} />
 
 export const EyeSlash = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faEyeSlash} />
+
+export const User = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faUser} />
+
+export const Setting = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faGear} />
+
+export const Admin = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faUserGraduate} />
+
+export const AdminSetting = ({style}) => <FontAwesomeIcon className={`${style}`} icon={faGears} />
+
