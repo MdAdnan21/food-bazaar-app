@@ -5,13 +5,20 @@ import { DEFAULT_PROFILE, DOMAIN } from '../utils/constants';
 import { AdminSetting, Setting, User } from '../utils/Icons';
 import UserMenuSkeleton from '../skeletons/UserMenuSkeleton';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UserMenu = ({ userData }) => {
   const { setShowSideMenu } = useShowSideMenu()
   const { logout } = useUserData()
+  const nevigate = useNavigate()
+  
+
   const handleLogout = () => {
     logout()
-    setTimeout(()=>{setShowSideMenu(false)},300)
+    setTimeout(()=>{
+      setShowSideMenu(false);
+      nevigate('/')
+    },300)
   };
 
   const { loadingUserData } = useLoadingUser()
