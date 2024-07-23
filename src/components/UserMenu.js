@@ -4,6 +4,7 @@ import RestaurantCardSkeleton from '../skeletons/RestaurantCardSkeleton';
 import { DEFAULT_PROFILE, DOMAIN } from '../utils/constants';
 import { AdminSetting, Setting, User } from '../utils/Icons';
 import UserMenuSkeleton from '../skeletons/UserMenuSkeleton';
+import { Link } from 'react-router-dom';
 
 const UserMenu = ({ userData }) => {
   const { setShowSideMenu } = useShowSideMenu()
@@ -37,24 +38,24 @@ const UserMenu = ({ userData }) => {
       </div>
       <div className="flex flex-col gap-2">
         <div className="mx-5 flex flex-col w-9/12 ">
-          <div className="px-6 py-2 my-2 font-semibold rounded-lg shadow-md text-black text-lg cursor-pointer hover:text-white transition duration-300 transform hover:bg-default hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
+          <Link to='/profile' className="px-6 py-2 my-2 font-semibold rounded-lg shadow-md text-black text-lg cursor-pointer hover:text-white transition duration-300 transform hover:bg-default hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
             <User style={'mr-2'} />
             <span>Profile</span>
-          </div>
-          <div className="px-6 py-2 my-2 font-semibold rounded-lg shadow-md text-black text-lg cursor-pointer hover:bg-default hover:text-white transition duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
+          </Link>
+          <Link to='/settings' className="px-6 py-2 my-2 font-semibold rounded-lg shadow-md text-black text-lg cursor-pointer hover:bg-default hover:text-white transition duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
             <Setting style={'mr-2'} />
             <span>Settings</span>
-          </div>
+          </Link>
           {userData?.userType === 'Admin' && (
             <>
-              <div className="px-6 py-2 my-2 font-semibold rounded-lg shadow-md text-black text-lg cursor-pointer hover:bg-default hover:text-white transition duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
+              <Link to='/admin' className="px-6 py-2 my-2 font-semibold rounded-lg shadow-md text-black text-lg cursor-pointer hover:bg-default hover:text-white transition duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
                 <User style={'mr-2'} />
                 <span>Admin Dashboard</span>
-              </div>
-              <div className="px-6 py-2 font-semibold my-2 rounded-lg shadow-md text-black text-lg cursor-pointer hover:bg-default hover:text-white transition duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
+              </Link>
+              <Link to='/manageUsers' className="px-6 py-2 font-semibold my-2 rounded-lg shadow-md text-black text-lg cursor-pointer hover:bg-default hover:text-white transition duration-300 transform hover:scale-105 hover:shadow-lg whitespace-nowrap will-change-transform">
                 <AdminSetting style={'mr-2'} />
                 <span>Manage Users</span>
-              </div>
+              </Link>
             </>
           )}
           <button

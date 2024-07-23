@@ -14,6 +14,10 @@ import store from "./redux/store";
 import SideMenu from "./components/SideMenu";
 import { useShowSideMenu } from "./hooks/useUser";
 import { ToastContainer } from 'react-toastify';
+import Profile from "./pages/Profile";
+import Admin from "./pages/Admin";
+import Settings from "./pages/Settings";
+import ManageUsers from "./pages/ManageUsers";
 
 const Grocery = lazy(() => import("./pages/Grocery"))
 
@@ -58,7 +62,22 @@ const appRouter=createBrowserRouter([
         path: '/grocery',
         element: (<Suspense fallback={<h1>Loading...</h1>} ><Grocery /></Suspense>),
       },
-
+      {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
+        path: '/admin',
+        element: <Admin />
+      },
+      {
+        path: '/settings',
+        element: <Settings />
+      },
+      {
+        path: '/manageUsers',
+        element:  <ManageUsers />
+      },
     ],
     errorElement: <Error />
   },
