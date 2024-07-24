@@ -102,9 +102,11 @@ const useAuth = () => {
         setTimeout(()=>{setShowSideMenu(false)},1300)
       } else {
         showToast(data?.message, "error");
+        setLoadingUserData(false)
       }
     } catch (error) {
       showToast("An error occurred during login", "error");
+      setLoadingUserData(false)
     }
   };
 
