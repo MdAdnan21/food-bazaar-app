@@ -1,17 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { DEFAULT_PROFILE } from '../../utils/constants';
 
+const initialSignupData = {
+  fullName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  imageId: null,
+  defaultImageUrl: DEFAULT_PROFILE,
+  userType: "User",
+};
 
 const initialState = {
-  signupData: {
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    imageId: null,
-    defaultImageUrl: DEFAULT_PROFILE,
-    userType: "User",
-  },
+  signupData: initialSignupData,
   loginData: {
     email: "test1@email.com",
     password: "1234abc",
@@ -43,6 +44,7 @@ const userSlice = createSlice({
     logOut(state) {
       sessionStorage.removeItem('userData');
       state.userData = null;
+      state.signupData=initialSignupData
     },
     setShowMenu(state, action) {
       state.showMenu = action.payload
