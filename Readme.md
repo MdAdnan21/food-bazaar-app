@@ -82,7 +82,7 @@ Before running the project, ensure you have the following installed:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/food-app-frontend.git
+   git clone https://github.com/dee077/food-app-frontend.git
    cd Food-App-FE
    ```
 
