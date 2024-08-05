@@ -15,6 +15,7 @@ const UserMenu = ({ userData }) => {
 
   const handleLogout = () => {
     logout()
+    showToast("Logout successful!");
     setTimeout(()=>{
       setShowSideMenu(false);
       nevigate('/')
