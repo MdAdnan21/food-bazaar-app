@@ -6,6 +6,7 @@ import { AdminSetting, Setting, User } from '../utils/Icons';
 import UserMenuSkeleton from '../skeletons/UserMenuSkeleton';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { showToast } from '../utils/toastConfig';
 
 const UserMenu = ({ userData }) => {
   const { setShowSideMenu } = useShowSideMenu()
