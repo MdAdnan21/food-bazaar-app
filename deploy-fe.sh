@@ -5,6 +5,14 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+git reset --hard
+if [ $? -eq 0 ]; then
+    echo -e "\n${GREEN}Git reset successful${NC}\n"
+else
+    echo -e "\n${RED}Git reset failed${NC}\n"
+    exit 1
+fi
+
 # Pull the latest changes from GitHub
 git pull 
 if [ $? -eq 0 ]; then
