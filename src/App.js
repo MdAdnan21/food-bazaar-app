@@ -95,7 +95,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
-    <RouterProvider router={appRouter} />
+    <RouterProvider
+      router={appRouter}
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    />
     <ToastContainer />
   </Provider>
 );
