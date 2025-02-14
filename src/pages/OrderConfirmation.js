@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const OrderConfirmation = () => {
+  const navigate = useNavigate();
   const { items, restaurant, totalPrice, totalItems, billingDetails } =
     useSelector((state) => state.cart);
 
@@ -91,7 +93,9 @@ const OrderConfirmation = () => {
           </button>
           <button
             className="bg-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-400"
-            onclic
+            onClick={() => {
+              navigate("/");
+            }}
           >
             Back to Home
           </button>
