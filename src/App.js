@@ -1,10 +1,10 @@
-import React, { Suspense, lazy, useEffect, useState } from "react"
-import ReactDOM from "react-dom/client"
+import React, { Suspense, lazy, useEffect, useState } from "react";
+import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
-import Contact from "./pages/Contact"; 
-import About from "./pages/About"
+import Contact from "./pages/Contact";
+import About from "./pages/About";
 import Error from "./components/Error";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./pages/RestaurantMenu";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -13,81 +13,89 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import SideMenu from "./components/SideMenu";
 import { useShowSideMenu } from "./hooks/useUser";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import Settings from "./pages/Settings";
 import ManageUsers from "./pages/ManageUsers";
-
-const Grocery = lazy(() => import("./pages/Grocery"))
+import OrderConfirmation from "./pages/OrderConfirmation";
+const Grocery = lazy(() => import("./pages/Grocery"));
 
 const App = () => {
+  const { showSideMenu, setShowSideMenu } = useShowSideMenu();
 
-  const {showSideMenu, setShowSideMenu} = useShowSideMenu()
-
-  return ( 
+  return (
     <div className="App">
       <Header sideMenu={() => setShowSideMenu(true)} />
-      <SideMenu isOpen={showSideMenu} onClose={() => setShowSideMenu(false)}/>
+      <SideMenu isOpen={showSideMenu} onClose={() => setShowSideMenu(false)} />
       <Outlet />
       <Footer />
-    </div>)
+    </div>
+  );
 };
 
-const appRouter=createBrowserRouter([
+const appRouter = createBrowserRouter([
   {
-    element: <App/>,
+    element: <App />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/about',
-        element: <About />
+        path: "/about",
+        element: <About />,
       },
       {
-        path: '/contact',
-        element: <Contact />
+        path: "/contact",
+        element: <Contact />,
       },
       {
-        path: '/cart',
-        element: <Cart />
+        path: "/cart",
+        element: <Cart />,
       },
       {
-        path: '/restaurant/:resId',
-        element: <RestaurantMenu />
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
       },
       {
-        path: '/grocery',
-        element: (<Suspense fallback={<h1>Loading...</h1>} ><Grocery /></Suspense>),
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
-        path: '/profile',
-        element: <Profile />
+        path: "/profile",
+        element: <Profile />,
       },
       {
-        path: '/admin',
-        element: <Admin />
+        path: "/admin",
+        element: <Admin />,
       },
       {
-        path: '/settings',
-        element: <Settings />
+        path: "/settings",
+        element: <Settings />,
       },
       {
-        path: '/manageUsers',
-        element:  <ManageUsers />
+        path: "/manageUsers",
+        element: <ManageUsers />,
+      },
+      {
+        path: "/orderconfirmation",
+        element: <OrderConfirmation />,
       },
     ],
-    errorElement: <Error />
+    errorElement: <Error />,
   },
-])
+]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
     <RouterProvider router={appRouter} />
     <ToastContainer />
   </Provider>
-)
+);

@@ -11,7 +11,15 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 const Home = () => {
   const [searchText, setsearchText] = useState("");
 
-  const { restaurants, filteredRestaurants, isLoading, error, carouselDishData, carouselResData, updateRestaurants} = useResData();
+  const {
+    restaurants,
+    filteredRestaurants,
+    isLoading,
+    error,
+    carouselDishData,
+    carouselResData,
+    updateRestaurants,
+  } = useResData();
 
   // console.log("Restaurant: ", restaurants)
   // console.log("FilteredRestaurants: ", filteredRestaurants);
@@ -55,24 +63,22 @@ const Home = () => {
       </h1>
 
       {isLoading ? (
-        <RestaurantCardSkeleton showHeading={loadingMore}  /> 
-        ) : (
-          !filteredRestaurants?.data?.length ? (
-            <Unserviceable />
-          ) : (
-            <div className="flex flex-wrap my-13">
-              {filteredRestaurants?.data?.map((restaurant) => (
-                <Link
-                  key={restaurant?.info?.id}
-                  to={"/restaurant/" + restaurant?.info?.id}
-                >
-                  <RestaurantCard resData={restaurant} />
-                </Link>
-              ))}
-              {loadingMore && <RestaurantCardSkeleton showHeading={false} />}
-            </div>
-          )
-        )}
+        <RestaurantCardSkeleton showHeading={loadingMore} />
+      ) : !filteredRestaurants?.data?.length ? (
+        <Unserviceable />
+      ) : (
+        <div className="flex flex-wrap my-13">
+          {filteredRestaurants?.data?.map((restaurant) => (
+            <Link
+              key={restaurant?.info?.id}
+              to={"/restaurant/" + restaurant?.info?.id}
+            >
+              <RestaurantCard resData={restaurant} />
+            </Link>
+          ))}
+          {loadingMore && <RestaurantCardSkeleton showHeading={false} />}
+        </div>
+      )}
     </div>
   );
 };

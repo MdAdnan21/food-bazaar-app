@@ -1,6 +1,13 @@
 // useUser.js
-import { useSelector, useDispatch } from 'react-redux';
-import { updateSignupData, updateLoginData, setUserData, logOut, setShowMenu, setLoadingUser } from '../redux/slices/userSlice';
+import { useSelector, useDispatch } from "react-redux";
+import {
+  updateSignupData,
+  updateLoginData,
+  setUserData,
+  logOut,
+  setShowMenu,
+  setLoadingUser,
+} from "../redux/slices/userSlice";
 
 const useSignupData = () => {
   const dispatch = useDispatch();
@@ -28,7 +35,6 @@ const useUserData = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user.userData);
 
-
   const setUser = (data) => {
     dispatch(setUserData(data));
   };
@@ -38,15 +44,15 @@ const useUserData = () => {
   };
 
   const getUserLocal = () => {
-    const userData = sessionStorage.getItem('userData');
+    const userData = sessionStorage.getItem("userData");
     if (userData) {
       const user = JSON.parse(userData);
       return user;
     }
-    return null
-  }
+    return null;
+  };
 
-  return {userData, setUser, logout, getUserLocal};
+  return { userData, setUser, logout, getUserLocal };
 };
 
 const useShowSideMenu = () => {
@@ -57,8 +63,8 @@ const useShowSideMenu = () => {
     dispatch(setShowMenu(data));
   };
 
-  return {showSideMenu, setShowSideMenu}
-}
+  return { showSideMenu, setShowSideMenu };
+};
 
 const useLoadingUser = () => {
   const dispatch = useDispatch();
@@ -68,7 +74,13 @@ const useLoadingUser = () => {
     dispatch(setLoadingUser(data));
   };
 
-  return {loadingUserData, setLoadingUserData}
-}
+  return { loadingUserData, setLoadingUserData };
+};
 
-export { useSignupData, useLoginData, useUserData, useShowSideMenu, useLoadingUser };
+export {
+  useSignupData,
+  useLoginData,
+  useUserData,
+  useShowSideMenu,
+  useLoadingUser,
+};
